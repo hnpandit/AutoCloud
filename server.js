@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Add routes, both API and view
-app.use(routes);
+//app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
