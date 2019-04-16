@@ -1,7 +1,9 @@
-const Items = require("./itemsController");
-const Users = require("./usersController");
+const User = require("./user");
+const Car = require("./car");
+const Document = require("./document");
 
 module.exports = {
-	Items,
-	Users
+	User,
+	Car,
+	Document
 };

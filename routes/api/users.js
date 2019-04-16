@@ -1,4 +1,4 @@
-// Dependencies
+/* // Dependencies
 const router = require("express").Router();
 const usersController = require("../../controllers/usersController");
 
@@ -9,3 +9,4 @@ router.route("/")
 
 // Exporting
 module.exports = router;
+ */
