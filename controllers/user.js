@@ -9,7 +9,7 @@ module.exports = {
       return err;
     }
   },
-  update: async (id, body) => {
+  updateById: async (id, body) => {
     try {
       const dbUser = await db.User.findOneAndUpdate({ _id: id }, body).then(
         data => data
@@ -31,9 +31,21 @@ module.exports = {
       return err;
     }
   },
+  fetchById: async id => {
+    try {
+      const dbUser = await db.User.findById(id)
+        .populate("cars")
+        .then(data => data);
+      return dbUser;
+    } catch (err) {
+      return err;
+    }
+  },
   fetchByEmail: async email => {
     try {
-      const dbUser = await db.User.find({ email }).then(data => data);
+      const dbUser = await db.User.find({ email })
+        .populate("cars")
+        .then(data => data);
       return dbUser;
     } catch (err) {
       return err;
