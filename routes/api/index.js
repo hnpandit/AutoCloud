@@ -1,12 +1,14 @@
-/* // Dependencies
+// Dependencies
 const router = require("express").Router();
-const itemRoutes = require("./items");
-const userRoutes = require("./users");
+const userRouter = require("./user");
+const carRouter = require("./car");
+const documentRouter = require("./document");
 
-// Item routes
-router.use("/items", itemRoutes);
-router.use("/users", userRoutes);
+// Routers
+router.use("/users", userRouter);
+router.use("/cars", carRouter);
+router.use("/documents", documentRouter);
 
 //Exporting
 module.exports = router;
- */
+ 
