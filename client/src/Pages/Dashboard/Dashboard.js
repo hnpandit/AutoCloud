@@ -1,18 +1,22 @@
+import React, { Component } from 'react';
+import Header from '../../Components/Header/Header';
+import Footer from '../../Components/Footer/Footer';
+import Body from '../../Components/Body/Body';
 
-
-render{
-    return(
-        <Nav /> 
-
-        {this.state.showCarRegistration ? 
-        
-            <registrationFormComponent />
+class Dashboard extends Component {
+    state = {  }
+    render() { 
+        return ( 
+            <React.Fragment>
+                <Header/>
+                <Body>
+                    
+                </Body>
+                <Footer/>
+            </React.Fragment>
             
-            :
-
-            
-        }
-
-        <Footer />
-    )
+         );
+    }
 }
+ 
+export default Dashboard;

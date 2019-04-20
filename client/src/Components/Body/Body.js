@@ -3,7 +3,7 @@ import "./Body.css";
 
 function Body(props) {
   return (
-      <main role="main"  className="main">
+      <main   className="main">
             {props.children}
       </main>
   )
