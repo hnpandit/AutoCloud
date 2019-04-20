@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import UserForm from './Components/UserForm';
 import CarProfileForm from './Components/CarProfileForm';
-
+import Navbar from './Components/Navbar';
 
 class App extends Component {
 
@@ -15,6 +15,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Navbar/>
         <UserForm onSubmit={fields => this.onSubmit(fields)} />
         <CarProfileForm submitCarForm={fields => this.submitCarForm(fields)} />
       </div>

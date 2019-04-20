@@ -1,0 +1,59 @@
+
+
+#logo {
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    margin-right: 10px;
+    text-shadow: 0 3px 6px #999, 0 3px 6px #999;
+}
+
+a {
+    padding: 5px 10px;
+    background-color: #333;
+    margin-right: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    color: #fff !important;
+    font-size: 20px;
+    text-align: center;
+}
+
+a:hover { 
+	background-color: red !important; /*had to add "!importan" to overide the others*/
+	transition: background .5s;
+}
+
+.navbar {
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+}
+
+/*
+header {
+    padding: 20px 0;
+    background-color: red;
+    margin-bottom: 5px;
+    box-shadow: 0 3px 6px #999, 0 3px 6px #999;
+    color: white;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 30px;
+    margin-left: 10px;
+}
+  
+header nav {
+    display: flex;
+    justify-content: flex-end;
+}
+  
+header p {
+    font-weight: bold;
+    padding: 0 20px;
+    margin: 0;
+}
+*/
