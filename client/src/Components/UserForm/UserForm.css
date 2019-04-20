@@ -1,0 +1,11 @@
+/* Form.Control {
+    display: block
+} */
+
+/* form {
+    border-radius: 25%;
+    border: 1px black solid,
+} */
+input {
+    border: .5px black solid
+}
