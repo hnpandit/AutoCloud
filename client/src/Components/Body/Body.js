@@ -3,10 +3,8 @@ import "./Body.css";
 
 function Body(props) {
   return (
-      <main role="main" className="flex-shrink-0">
-        <div className="container">
+      <main role="main"  className="main">
             {props.children}
-        </div>
       </main>
   )
 }

@@ -1,82 +1,94 @@
-import React, { Component } from 'react';
-import './UserRegistration.css';
+import React, { Component } from "react";
+import "./UserRegistration.css";
 // import Form from 'react-bootstrap/Form';
 // import Container from 'react-bootstrap/Container';
 
 class UserRegistration extends Component {
-    state = {
-        firstName: '',
-        lastName: '',
-        username: '',
-        email: '',
-        password: '',
+  state = {
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    password: ""
+  };
 
-    };
+  change = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
 
-    change = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
-    };
+  onSubmit = e => {
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+    console.log(this.state);
+  };
 
-    onSubmit = (e) => {
-        e.preventDefault();
-        this.props.onSubmit(this.state)
-        console.log(this.state)
-    };
-
-    render() {
-        return (
-            <form>
-                <h2>User Form</h2>
-                <input
-                    name='firstName'
-                    placeholder='First Name'
-                    value={this.state.firstName}
+  render() {
+    return (
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <h1>Join Auto Cloud</h1>
+              <form>
+                <div className="form-group">
+                  <label >First name</label>
+                  <input 
+                    name="firstName"
+                    value={this.state.firstName} 
                     onChange={e => this.change(e)}
-                />
-                <br />
-                <input
-                    name='lastName'
-                    placeholder='Last Name'
-                    value={this.state.lastName}
+                    type="text"
+                    className="form-control"
+                    id="first" />
+                </div>
+                <div className="form-group">
+                  <label >Last name</label>
+                  <input 
+                    name="lastName"
+                    value={this.state.lastName} 
                     onChange={e => this.change(e)}
-                />
-                <br />
-
-                <input
-                    name='username'
-                    placeholder='Username'
-                    value={this.state.username}
+                    type="text" 
+                    className="form-control" 
+                    id="last" />
+                </div>
+                <div className="form-group">
+                  <label >Username</label>
+                  <input 
+                    name="username"
+                    value={this.state.username} 
                     onChange={e => this.change(e)}
-                />
-                <br />
-
-                <input
-                    name='email'
-                    placeholder='Email'
-                    value={this.state.email}
+                    type="email" className="form-control" 
+                    id="username" />
+                </div>
+                <div className="form-group">
+                  <label >Email</label>
+                  <input 
+                    name="email"
+                    value={this.state.email} 
                     onChange={e => this.change(e)}
-                />
-                <br />
-
-                <input
-                    name='password'
-                    type='password'
-                    placeholder='Password'
-                    value={this.state.password}
+                    type="email" className="form-control" 
+                    id="email" />
+                </div>
+                <div className="form-group">
+                  <label>Password</label>
+                  <input 
+                    name="password"
+                    value={this.state.password} 
                     onChange={e => this.change(e)}
-                />
-                <br />
-
-
-
-                <button onClick={e => this.onSubmit(e)}>Submit</button>
-            </form>
-        )
-    }
-
-
+                    type="password" className="form-control" id="password" />
+                </div>
+                <button 
+                    onClick={e => this.onSubmit(e)}
+                    type="submit" 
+                    className="btn">
+                    Create account
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+    );
+  }
 }
 
 export default UserRegistration;
