@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './CarProfileForm.css';
+import './CarProfile.css';
 
 
-class CarProfileForm extends Component {
+class CarProfile extends Component {
     state = {
         model: '',
         make: '',
@@ -58,4 +58,4 @@ class CarProfileForm extends Component {
     }
 }
 
-export default CarProfileForm;
+export default CarProfile;

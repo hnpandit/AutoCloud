@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import UserForm from './Components/UserForm';
-import CarProfileForm from './Components/CarProfileForm';
+import UserRegistration from './Pages/UserRegistration/UserRegistration';
+import CarProfile from './Pages/CarProfile/CarProfile';
 
 
 class App extends Component {
@@ -15,8 +15,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <UserForm onSubmit={fields => this.onSubmit(fields)} />
-        <CarProfileForm submitCarForm={fields => this.submitCarForm(fields)} />
+        <UserRegistration onSubmit={fields => this.onSubmit(fields)} />
+        <CarProfile submitCarForm={fields => this.submitCarForm(fields)} />
       </div>
     );
   }
