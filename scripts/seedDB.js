@@ -41,6 +41,8 @@ db.User.remove({})
         if (err) return handleError(err);
 
         const user = new db.User({
+          firstName: "User",
+          lastName: "1",
           userName: "User1",
           password: "12345",
           email: "User1@user.net",
@@ -50,7 +52,8 @@ db.User.remove({})
         });
 
         user.save(function(err) {
-          if (err) return handleError(err);
+          if (err) return err;
+          //console.log(err);
         });
       });
     });
