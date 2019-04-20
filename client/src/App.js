@@ -1,13 +1,22 @@
-import React, { Component } from '../node_modules/react';
-import logo from './logo.svg';
-import './App.css';
-import ProfileForm from './Components/ProfileForm/';
+import React, { Component } from 'react';
+import UserForm from './Components/UserForm';
+import CarProfileForm from './Components/CarProfileForm';
+
 
 class App extends Component {
+
+  onSubmit = fields => {
+    console.log(fields)
+  };
+  submitCarForm = fields => {
+    console.log(fields)
+  }
+
   render() {
     return (
-      <div className="App">
-        <ProfileForm />
+      <div>
+        <UserForm onSubmit={fields => this.onSubmit(fields)} />
+        <CarProfileForm submitCarForm={fields => this.submitCarForm(fields)} />
       </div>
     );
   }
