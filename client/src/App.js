@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserRegistration from './Pages/UserRegistration/UserRegistration';
 import CarProfile from './Pages/CarProfile/CarProfile';
+import Header from './Components/Header/Header';
 
 
 class App extends Component {
@@ -14,10 +15,11 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
+        <Header/>
         <UserRegistration onSubmit={fields => this.onSubmit(fields)} />
         <CarProfile submitCarForm={fields => this.submitCarForm(fields)} />
-      </div>
+      </React.Fragment>
     );
   }
 }
