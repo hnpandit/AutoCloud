@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './UserForm.css';
+import './UserRegistration.css';
 // import Form from 'react-bootstrap/Form';
 // import Container from 'react-bootstrap/Container';
 
-class UserForm extends Component {
+class UserRegistration extends Component {
     state = {
         firstName: '',
         lastName: '',
@@ -79,6 +79,4 @@ class UserForm extends Component {
 
 }
 
-
-
-export default UserForm;
+export default UserRegistration;
