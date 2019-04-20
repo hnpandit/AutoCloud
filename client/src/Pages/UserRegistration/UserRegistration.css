@@ -1,12 +1,19 @@
 
-.container {
-    max-width: 600px;
+body {
+	background: url(https://i.pinimg.com/originals/97/7f/be/977fbe4bceded3d36b9b39b812cb94af.jpg) no-repeat center; /*"fixed" value could be added only with "background" property*/
+	background-size: cover;
+	color: #fff;
 }
 
+.container {
+	margin-top: 150px;
+	max-width: 600px;
+	text-align: center;
+}
 
 /***MAIN***/
 .main h1 {
-	font-size: 40px;
+	font-size: 45px;
 	margin: 0 0 20px 0;
 }
 
@@ -18,7 +25,7 @@ form input.form-control {
 .main .btn {
 	margin-top: 30px;
 	color: #fff;
-	background: orange;
+	background-color: orange;
 	border-radius: 0px;
 }
 
