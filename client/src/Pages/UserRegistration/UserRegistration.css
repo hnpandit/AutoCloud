@@ -1,11 +1,36 @@
-/* Form.Control {
-    display: block
-} */
 
-/* form {
-    border-radius: 25%;
-    border: 1px black solid,
-} */
-input {
-    border: .5px black solid
+body {
+	background-image: url(https://s3.amazonaws.com/codecademy-content/projects/pocketbook/bg.jpg); /*"fixed" value could be added only with "background" property*/
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: #140e07;
+	color: #fff;
+}
+
+.container {
+    max-width: 600px;
+}
+
+
+/***MAIN***/
+.main h1 {
+	font-size: 40px;
+	margin: 0 0 20px 0;
+}
+
+form input.form-control {
+	border: 0px;
+	border-radius: 0px;
+}
+
+.main .btn {
+	margin-top: 30px;
+	color: #fff;
+	background: orange;
+	border-radius: 0px;
+}
+
+.main .btn:hover {
+    background-color: red;
+    
 }
