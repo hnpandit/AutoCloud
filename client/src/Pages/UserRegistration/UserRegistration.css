@@ -1,8 +1,11 @@
 
-body {
+#registrationPage {
 	background: url(https://i.pinimg.com/originals/97/7f/be/977fbe4bceded3d36b9b39b812cb94af.jpg) no-repeat center; /*"fixed" value could be added only with "background" property*/
 	background-size: cover;
 	color: #fff;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
 }
 
 .container {
@@ -13,12 +16,12 @@ body {
 }
 
 /***MAIN***/
-.main h1 {
+h1 {
 	font-size: 45px;
-	margin: 0 0 20px 0;
+	margin-bottom: 20px;
 }
 
-form input.form-control {
+.form-control {
 	border: 0px;
 	border-radius: 0px;
 	
@@ -26,6 +29,10 @@ form input.form-control {
 
 
 .main .btn {
+	margin-bottom: 3px;
+}
+
+.btn {
 	margin-top: 30px;
 	color: #fff;
 	background-color: orange;
@@ -40,4 +47,7 @@ form input.form-control {
 
 .btn {
 	color: black
+.btn:hover {
+	background-color: red;
+	color: #fff;
 }
