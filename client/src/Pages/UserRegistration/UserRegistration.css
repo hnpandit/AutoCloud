@@ -1,6 +1,4 @@
-* {
-	border: 1px solid red;
-}
+
 #registrationPage {
 	background: url(https://i.pinimg.com/originals/97/7f/be/977fbe4bceded3d36b9b39b812cb94af.jpg) no-repeat center; /*"fixed" value could be added only with "background" property*/
 	background-size: cover;
