@@ -25,6 +25,7 @@ h1 {
 	border: 0px;
 	border-radius: 0px;
 	margin-bottom: 20px;
+rgin-bottom: 3px;
 }
 
 .btn {
@@ -32,8 +33,16 @@ h1 {
 	color: #fff;
 	background-color: orange;
 	border-radius: 0px;
+	color: black
 }
 
+.main .btn:hover {
+    background-color: red;
+    
+}
+
+.btn {
+	color: black
 .btn:hover {
 	background-color: red;
 	color: #fff;

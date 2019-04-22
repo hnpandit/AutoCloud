@@ -13,9 +13,9 @@ class UserRegistration extends Component {
     password: ""
   };
 
-  change = e => {
+  change = event => {
     this.setState({
-      [e.target.name]: e.target.value
+      [event.target.name]: event.target.value
     });
   };
 
@@ -34,7 +34,6 @@ class UserRegistration extends Component {
               <h1>Join Auto Cloud</h1>
               <form>
                 <div className="form-group">
-                  <label>First name</label>
                   <input
                     name="firstName"
                     value={this.state.firstName}
@@ -42,49 +41,54 @@ class UserRegistration extends Component {
                     type="text"
                     className="form-control"
                     id="first"
+                    placeholder='First Name'
                   />
                 </div>
                 <div className="form-group">
-                  <label>Last name</label>
                   <input
+
                     name="lastName"
                     value={this.state.lastName}
                     onChange={e => this.change(e)}
                     type="text"
                     className="form-control"
+                    placeholder='Last Name'
+
                     id="last"
                   />
                 </div>
                 <div className="form-group">
-                  <label>Username</label>
                   <input
                     name="username"
                     value={this.state.username}
                     onChange={e => this.change(e)}
                     type="email"
                     className="form-control"
+                    placeholder='Username'
+
                     id="username"
                   />
                 </div>
                 <div className="form-group">
-                  <label>Email</label>
                   <input
                     name="email"
                     value={this.state.email}
                     onChange={e => this.change(e)}
                     type="email"
                     className="form-control"
+                    placeholder='E-Mail'
                     id="email"
                   />
                 </div>
                 <div className="form-group">
-                  <label>Password</label>
                   <input
                     name="password"
                     value={this.state.password}
                     onChange={e => this.change(e)}
                     type="password"
                     className="form-control"
+                    placeholder='Password'
+
                     id="password"
                   />
                 </div>
@@ -93,7 +97,7 @@ class UserRegistration extends Component {
                   type="submit"
                   className="btn"
                 >
-                  Create account
+                  Create Account
                 </button>
               </form>
             </div>
