@@ -3,9 +3,7 @@ import React, { Component } from "react";
 import UserRegistration from "./Pages/UserRegistration/UserRegistration";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 //import CarProfile from "./Pages/CarProfile/CarProfile";
-//import Header from "./Components/Header/Header";
-//import Body from "./Components/Body/Body";
-//import Footer from "./Components/Footer/Footer";
+
 
 class App extends Component {
   onSubmit = fields => {
@@ -21,7 +19,7 @@ class App extends Component {
         
           <UserRegistration onSubmit={fields => this.onSubmit(fields)} />
         
-          <Dashboard/>
+          
 
       </React.Fragment>
     );

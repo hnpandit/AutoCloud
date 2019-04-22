@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./UserRegistration.css";
-import Body from "../../Components/Body/Body";
+//import Body from "../../Components/Body/Body";
 // import Form from 'react-bootstrap/Form';
 // import Container from 'react-bootstrap/Container';
 
@@ -27,7 +27,7 @@ class UserRegistration extends Component {
 
   render() {
     return (
-      <Body>
+      <div id="registrationPage">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -99,7 +99,7 @@ class UserRegistration extends Component {
             </div>
           </div>
         </div>
-      </Body>
+      </div>
     );
   }
 }

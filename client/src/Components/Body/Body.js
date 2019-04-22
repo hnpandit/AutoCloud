@@ -3,7 +3,7 @@ import "./Body.css";
 
 function Body(props) {
   return (
-      <main   className="main">
+      <main   id="body">
             {props.children}
       </main>
   )
