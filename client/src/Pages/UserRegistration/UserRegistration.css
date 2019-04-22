@@ -46,7 +46,7 @@ h1 {
 }
 
 .btn {
-	color: black
+	color: black }
 .btn:hover {
 	background-color: red;
 	color: #fff;
