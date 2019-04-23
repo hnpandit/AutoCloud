@@ -9,7 +9,7 @@ module.exports = {
       return err;
     }
   },
-  update: async (id, body) => {
+  updateById: async (id, body) => {
     try {
       const dbCar = await db.Car.findOneAndUpdate({ _id: id }, body).then(
         data => data
@@ -26,6 +26,16 @@ module.exports = {
             name: 1,
             module: 1
         })
+        .then(data => data);
+      return dbCar;
+    } catch (err) {
+      return err;
+    }
+  },
+  fetchById: async id => {
+    try {
+      const dbCar = await db.Car.findById(id)
+        .populate("docs")
         .then(data => data);
       return dbCar;
     } catch (err) {
