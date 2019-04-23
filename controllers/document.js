@@ -9,7 +9,7 @@ module.exports = {
       return err;
     }
   },
-  update: async (id, body) => {
+  updateById: async (id, body) => {
     try {
       const dbDocument = await db.Document.findOneAndUpdate({ _id: id }, body).then(
         data => data
@@ -32,12 +32,13 @@ module.exports = {
       return err;
     }
   },
-  fetchByType: async type => {
+  fetchById: async id => {
     try {
-      const dbDocument = await db.Document.find({ type }).then(data => data);
+      const dbDocument = await db.Document.findById(id)
+        .then(data => data);
       return dbDocument;
     } catch (err) {
       return err;
     }
-  }
+  },
 };
