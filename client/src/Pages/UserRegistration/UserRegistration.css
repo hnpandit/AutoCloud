@@ -28,27 +28,21 @@ h1 {
 	
 }
 
-
-.main .btn {
-	margin-bottom: 3px;
-}
-
 .btn {
 	margin-top: 30px;
 	color: #fff;
 	background-color: orange;
 	border-radius: 0px;
-	color: black
-}
-
-.main .btn:hover {
-    background-color: red;
-    
+	color: black;
+	margin-bottom: 40px;
 }
 
 .btn {
 	color: black }
+
 .btn:hover {
 	background-color: red;
 	color: #fff;
+    
 }
+
