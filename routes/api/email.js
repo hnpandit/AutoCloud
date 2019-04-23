@@ -13,7 +13,7 @@ emailRouter
     email.sendEmail('himanshu.pandit@outlook.com', 'Welcome to RCB AutoCloud', message);
     
     res.send("Email sent.");
-
+ç
   });
 
   module.exports = emailRouter;
