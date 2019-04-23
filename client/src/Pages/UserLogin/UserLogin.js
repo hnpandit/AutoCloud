@@ -1,7 +1,113 @@
-import React from "react";
-import reactDom from "react-dom";
+
+import React, { Component } from "react";
 import "./UserLogin.css";
 
+class UserRegistration extends Component {
+  state = {
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    password: ""
+  };
+
+  change = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+    console.log(this.state);
+  };
+
+  render() {
+    return (
+      <div id="registrationPage">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
+              <h1>Join Auto Cloud</h1>
+              <form>
+                <div className="form-group">
+                  <input
+                    name="firstName"
+                    value={this.state.firstName}
+                    onChange={e => this.change(e)}
+                    type="text"
+                    className="form-control"
+                    id="first"
+                    placeholder='First Name'
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+
+                    name="lastName"
+                    value={this.state.lastName}
+                    onChange={e => this.change(e)}
+                    type="text"
+                    className="form-control"
+                    placeholder='Last Name'
+
+                    id="last"
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    name="username"
+                    value={this.state.username}
+                    onChange={e => this.change(e)}
+                    type="email"
+                    className="form-control"
+                    placeholder='Username'
+
+                    id="username"
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    name="email"
+                    value={this.state.email}
+                    onChange={e => this.change(e)}
+                    type="email"
+                    className="form-control"
+                    placeholder='E-Mail'
+                    id="email"
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    name="password"
+                    value={this.state.password}
+                    onChange={e => this.change(e)}
+                    type="password"
+                    className="form-control"
+                    placeholder='Password'
+
+                    id="password"
+                  />
+                </div>
+                <button
+                  onClick={e => this.onSubmit(e)}
+                  type="submit"
+                  className="btn"
+                >
+                  Create Account
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default UserRegistration;
+/*
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -124,3 +230,4 @@ class RegisterBox extends React.Component {
     );
   }
 }
+*/

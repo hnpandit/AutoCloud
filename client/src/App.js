@@ -23,8 +23,8 @@ class App extends Component {
           {/* <UserRegistration onSubmit={fields => this.onSubmit(fields)} /> */}
         
         
-          
-          <Dashboard/>
+         
+          <CarProfile/>
           
 
       </React.Fragment>
