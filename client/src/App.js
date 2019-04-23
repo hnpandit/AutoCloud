@@ -2,6 +2,7 @@ import React, { Component } from "react";
 //import { BrowserRouter as Router, Route } from "react-router-dom";
 import UserRegistration from "./Pages/UserRegistration/UserRegistration";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import CarProfile from "./Pages/CarProfile/CarProfile";
 //import UserLogin from "./Pages/UserLogin/UserLogin";
 //import CarProfile from "./Pages/CarProfile/CarProfile";
 
@@ -18,8 +19,8 @@ class App extends Component {
     return (
       <React.Fragment>
         
-          
-          <Dashboard/>
+         
+          <CarProfile/>
           
 
       </React.Fragment>
