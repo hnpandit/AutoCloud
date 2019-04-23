@@ -19,7 +19,7 @@ a {
 }
 
 a:hover { 
-	background-color: red !important; /*had to add "!importan" to overide the others*/
+	background-color: red; /*had to add "!importan" to overide the others*/
 	transition: background .5s;
 }
 

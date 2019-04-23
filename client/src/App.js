@@ -1,27 +1,24 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import UserRegistration from "./Pages/UserRegistration/UserRegistration";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import CarProfile from "./Pages/CarProfile/CarProfile";
-//import UserLogin from "./Pages/UserLogin/UserLogin";
-//import CarProfile from "./Pages/CarProfile/CarProfile";
+import UserLogin from "./Pages/UserLogin/UserLogin";
+import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 
 class App extends Component {
-  onSubmit = fields => {
-    console.log(fields);
-  };
-  submitCarForm = fields => {
-    console.log(fields);
-  };
+  
 
   render() {
     return (
       <BrowserRouter>
-        <Route exact path="/" component={UserRegistration}/>
-        <Route path="/carProfile" component={CarProfile}/>
-        <Route path="/dashboard" component={Dashboard}/>
-        
-        {/* <UserRegistration onSubmit={fields => this.onSubmit(fields)} /> */}
+        <Switch>
+          <Route exact path="/" component={UserLogin} />
+          <Route path="/register" component={UserRegistration} />
+          <Route path="/carProfile" component={CarProfile} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route component={PageNotFound}/>
+        </Switch>
       </BrowserRouter>
     );
   }

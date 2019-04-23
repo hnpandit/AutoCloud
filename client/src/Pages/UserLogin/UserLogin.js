@@ -1,13 +1,9 @@
-
 import React, { Component } from "react";
 import "./UserLogin.css";
 
-class UserRegistration extends Component {
+class UserLogin extends Component {
   state = {
-    firstName: "",
-    lastName: "",
     username: "",
-    email: "",
     password: ""
   };
 
@@ -17,11 +13,15 @@ class UserRegistration extends Component {
     });
   };
 
+  
   onSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
     console.log(this.state);
   };
+  
+
+  
+
 
   render() {
     return (
@@ -29,32 +29,9 @@ class UserRegistration extends Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h1>Join Auto Cloud</h1>
+              <h1>Auto Cloud</h1>
+              <p>Log in</p>
               <form>
-                <div className="form-group">
-                  <input
-                    name="firstName"
-                    value={this.state.firstName}
-                    onChange={e => this.change(e)}
-                    type="text"
-                    className="form-control"
-                    id="first"
-                    placeholder='First Name'
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-
-                    name="lastName"
-                    value={this.state.lastName}
-                    onChange={e => this.change(e)}
-                    type="text"
-                    className="form-control"
-                    placeholder='Last Name'
-
-                    id="last"
-                  />
-                </div>
                 <div className="form-group">
                   <input
                     name="username"
@@ -62,22 +39,11 @@ class UserRegistration extends Component {
                     onChange={e => this.change(e)}
                     type="email"
                     className="form-control"
-                    placeholder='Username'
-
+                    placeholder="Username"
                     id="username"
                   />
                 </div>
-                <div className="form-group">
-                  <input
-                    name="email"
-                    value={this.state.email}
-                    onChange={e => this.change(e)}
-                    type="email"
-                    className="form-control"
-                    placeholder='E-Mail'
-                    id="email"
-                  />
-                </div>
+
                 <div className="form-group">
                   <input
                     name="password"
@@ -85,19 +51,20 @@ class UserRegistration extends Component {
                     onChange={e => this.change(e)}
                     type="password"
                     className="form-control"
-                    placeholder='Password'
-
+                    placeholder="Password"
                     id="password"
                   />
                 </div>
+
                 <button
                   onClick={e => this.onSubmit(e)}
                   type="submit"
                   className="btn"
                 >
-                  Create Account
+                  Log In
                 </button>
               </form>
+              <a href="/register">Register</a>
             </div>
           </div>
         </div>
@@ -106,8 +73,10 @@ class UserRegistration extends Component {
   }
 }
 
-export default UserRegistration;
-/*
+export default UserLogin;
+
+/*   CODE BELOW IS FOR TESTING PURPOSES. JUST IGNORE
+
 class App extends React.Component {
   constructor(props) {
     super(props);

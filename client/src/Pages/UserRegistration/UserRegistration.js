@@ -21,7 +21,6 @@ class UserRegistration extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
     console.log(this.state);
   };
 
@@ -45,19 +44,19 @@ class UserRegistration extends Component {
                     placeholder='First Name'
                   />
                 </div>
+
                 <div className="form-group">
                   <input
-
                     name="lastName"
                     value={this.state.lastName}
                     onChange={e => this.change(e)}
                     type="text"
                     className="form-control"
                     placeholder='Last Name'
-
                     id="last"
                   />
                 </div>
+
                 <div className="form-group">
                   <input
                     name="username"
@@ -66,10 +65,10 @@ class UserRegistration extends Component {
                     type="email"
                     className="form-control"
                     placeholder='Username'
-
                     id="username"
                   />
                 </div>
+
                 <div className="form-group">
                   <input
                     name="email"
@@ -81,6 +80,7 @@ class UserRegistration extends Component {
                     id="email"
                   />
                 </div>
+
                 <div className="form-group">
                   <input
                     name="password"
@@ -89,10 +89,10 @@ class UserRegistration extends Component {
                     type="password"
                     className="form-control"
                     placeholder='Password'
-
                     id="password"
                   />
                 </div>
+
                 <button
                   onClick={e => this.onSubmit(e)}
                   type="submit"
