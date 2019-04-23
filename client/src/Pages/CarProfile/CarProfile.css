@@ -1,5 +1,54 @@
-/* Form {
-    border-radius: 25%;
-    border: 1px solid black;
-    text-align: center;
-} */
+
+#carProfile {
+	background: url(https://i.pinimg.com/originals/97/7f/be/977fbe4bceded3d36b9b39b812cb94af.jpg) no-repeat center; /*"fixed" value could be added only with "background" property*/
+	background-size: cover;
+	color: #fff;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Quicksand', sans-serif;
+}
+
+.container {
+	margin-top: 150px;
+	max-width: 600px;
+	text-align: center;
+	margin-bottom: 50px;
+}
+
+/***MAIN***/
+h1 {
+	font-size: 45px;
+	margin-bottom: 20px;
+}
+
+.form-control {
+	border: 0px;
+	border-radius: 0px;
+	
+}
+
+
+.main .btn {
+	margin-bottom: 3px;
+}
+
+.btn {
+	margin-top: 30px;
+	color: #fff;
+	background-color: orange;
+	border-radius: 0px;
+	color: black
+}
+
+.main .btn:hover {
+    background-color: red;
+    
+}
+
+.btn {
+	color: black }
+.btn:hover {
+	background-color: red;
+	color: #fff;
+}

@@ -5,57 +5,80 @@ import './CarProfile.css';
 class CarProfile extends Component {
     state = {
         model: '',
-        make: '',
+        carMake: '',
         year: '',
     };
 
-    change = (e) => {
+    change = event => {
         this.setState({
-            [e.target.name]: e.target.value
+          [event.target.name]: event.target.value
         });
-    };
+      };
 
-    submitCarForm = (e) => {
+    submitCarProfile = (e) => {
         e.preventDefault();
-        this.props.submitCarForm(this.state)
+        this.props.submitCarProfile(this.state)
         console.log(this.state)
     };
 
 
     render() {
-        return (
-            <form>
-                <h2>Car Profile</h2>
-                <input
-                    name='make'
-                    placeholder='Make'
-                    value={this.state.make}
-                    onChange={e => this.change(e)}
+        return(
+            <div id="carProfile">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <h1>AutoCloud</h1>
+                            <p>Add a Car to your Profile</p>
+                            <form>
+                                <div className="form-group">
+                                    <input
+                                        name="carMake"
+                                        value={this.state.carMake}
+                                        onChange={event => this.change(event)}
+                                        type="text"
+                                        className="form-control"
+                                        placeholder=' Car Manufacturer'
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <input
 
-                />
-                <br />
-                <input
-                    name='model'
-                    placeholder='Model'
-                    value={this.state.model}
-                    onChange={e => this.change(e)}
-                />
-                <br />
-                
+                                        name="model"
+                                        value={this.state.model}
+                                        onChange={event => this.change(event)}
+                                        type="text"
+                                        className="form-control"
+                                        placeholder='Model'
 
-                <input
-                    name='year'
-                    placeholder='Year'
-                    value={this.state.year}
-                    onChange={e => this.change(e)}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <input
+                                        name="year"
+                                        value={this.state.year}
+                                        onChange={event => this.change(event)}
+                                        type="text"
+                                        className="form-control"
+                                        placeholder='Year'
 
-                />
-                <br />
-
-                <button onClick={e => this.submitCarForm(e)}>Submit</button>
-            </form>
-        )
+                                    />
+                                </div>
+                              
+                           
+                                <button
+                                    onClick={event => this.submitCarProfile(event)}
+                                    type="submit"
+                                    className="btn"
+                                >Add Vehicle</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
     }
+      
 }
 
 export default CarProfile;
