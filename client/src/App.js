@@ -18,8 +18,8 @@ class App extends Component {
     return (
       <React.Fragment>
         
-          <UserRegistration onSubmit={fields => this.onSubmit(fields)} />
           
+          <Dashboard/>
           
 
       </React.Fragment>
