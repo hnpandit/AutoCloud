@@ -31,7 +31,8 @@ class UserRegistration extends Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h1>Join Auto Cloud</h1>
+              <h1>Auto Cloud</h1>
+              <p>Create Your Account</p>
               <form>
                 <div className="form-group">
                   <input
