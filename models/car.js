@@ -6,7 +6,7 @@ const carSchema = new Schema({
    	name : { type: String, required: true },
    	model:  { type: String, required: true },
    	year: { type: Number, required: true },
-	doc: [
+	docs: [
 		{
 			type: Schema.Types.ObjectId,
 			ref: 'Document',
