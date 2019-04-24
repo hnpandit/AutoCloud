@@ -34,7 +34,14 @@ module.exports = {
   fetchById: async id => {
     try {
       const dbUser = await db.User.findById(id)
-        .populate("cars")
+        .populate({
+          path: 'cars',
+          model: 'Car',
+          populate: {
+            path: 'docs',
+            model: 'Document'
+          }
+        })
         .then(data => data);
       return dbUser;
     } catch (err) {
@@ -44,7 +51,14 @@ module.exports = {
   fetchByEmail: async email => {
     try {
       const dbUser = await db.User.find({ email })
-        .populate("cars")
+        .populate({
+          path: 'cars',
+          model: 'Car',
+          populate: {
+            path: 'docs',
+            model: 'Document'
+          }
+        })
         .then(data => data);
       return dbUser;
     } catch (err) {

@@ -34,7 +34,7 @@ db.User.remove({})
         name: "Toyota",
         model: "Rav4",
         year: 2019,
-        doc: result.map(doc => doc._id)
+        docs: result.map(doc => doc._id)
       });
 
       car.save(function(err) {
@@ -48,7 +48,7 @@ db.User.remove({})
           email: "User1@user.net",
           phoneNumber: "911",
           zipCode: "10001",
-          car: car._id
+          cars: car._id
         });
 
         user.save(function(err) {
