@@ -1,6 +1,36 @@
+body {
+	font-family: 'Quicksand', sans-serif;
+
+}
+
+h1 {
+  color: orange;
+}
 
 #dashboardPage {
     background: url(https://images.pond5.com/large-beam-dust-footage-084876117_prevstill.jpeg)
       no-repeat center; /*"fixed" value could be added only with "background" property*/
     background-size: cover;
   }
+
+.tab-content {
+  margin-top: 50px;
+}
+.nav-tabs {
+  margin-top: 100px;
+}
+.nav-tabs .nav-link.active {
+  background: orange;
+  border: 1px solid black;
+  color: black;
+}
+
+.tab-content {
+  color: black;
+  text-align: center
+}
+.card {
+  padding: 28px;
+  margin: 10px;
+  background: orange
+}

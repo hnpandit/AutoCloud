@@ -20,12 +20,13 @@ a {
 
 a:hover { 
 	background-color: red; /*had to add "!importan" to overide the others*/
-	transition: background .5s;
+    transition: background .5s;
 }
+ 
 
-/*
-{
+
+/* /* {
     box-shadow: 0 3px 6px #999, 0 3px 6px #999;
-}
-*/
+} */
+
 

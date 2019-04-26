@@ -1,50 +1,58 @@
 import React, { Component } from "react";
-import "./Dashboard.css";
-import Header from "../../Components/Header/Header";
-import Footer from "../../Components/Footer/Footer";
-import Body from "../../Components/Body/Body";
-// import Tab from 'react-bootstrap/Tab'
+// import "../../App.css";
+import "./Dashboard.css"
+
+import Tab from 'react-bootstrap/Tab'
+import Tabs from 'react-bootstrap/Tabs'
+import Navbar from "../../Components/Navbar/Navbar";
+// import Footer from "../../Components/Footer/Footer";
 // import Col from 'react-bootstrap/Col'
 // import Nav from 'react-bootstrap/Nav'
 // import Row from 'react-bootstrap/Row'
-// import Sonnet from 'react-bootstrap/Sonnet'
 
 class Dashboard extends Component {
   state = {};
   render() {
     return (
-      <div className="d-flex flex-column h-100" id="dashboardPage">
-        <Header />
-        <Body>
-          <h1>Hello World!</h1>
-
-          {/*<Tab.Container id="left-tabs-example" defaultActiveKey="first">
-             <Row>
-               <Col sm={3}>
-                 <Nav variant="pills" className="flex-column">
-                   <Nav.Item>
-                     <Nav.Link eventKey="first">Tab 1</Nav.Link>
-                   </Nav.Item>
-                   <Nav.Item>
-                     <Nav.Link eventKey="second">Tab 2</Nav.Link>
-                   </Nav.Item>
-                 </Nav>
-               </Col>
-               <Col sm={9}>
-                 <Tab.Content>
-                   <Tab.Pane eventKey="first">
-                     <Sonnet />
-                   </Tab.Pane>
-                   <Tab.Pane eventKey="second">
-                     <Sonnet />
-                   </Tab.Pane>
-                 </Tab.Content>
-               </Col>
-             </Row>
-           </Tab.Container>
-        */}
-        </Body>
-        <Footer />
+      <div>
+        <Navbar />
+        <div>
+          <Tabs defaultActiveKey="" id="dashboard-tabs">
+            <Tab eventKey="home" title="Vehicle 1">
+              <div>
+                <Tab.Pane eventKey="first">
+                  <h1>Vehicle #1</h1>
+                  <div className='card'>
+                    <p>Registration Expiration</p>
+                  </div>
+                  <div className='card'>
+                    <p>License Expiration</p>
+                  </div>
+                  <div className='card'>
+                    <p>Inspection Expiration</p>
+                  </div>
+                </Tab.Pane>
+              </div>
+            </Tab>
+            <Tab eventKey="profile" title="Vehicle 2">
+              <div>
+                <Tab.Pane eventKey="second">
+                <h1>Vehicle #2</h1>
+                  <div className='card'>
+                    <p>Registration Expiration</p>
+                  </div>
+                  <div className='card'>
+                    <p>License Expiration</p>
+                  </div>
+                  <div className='card'>
+                    <p>Inspection Expiration</p>
+                  </div>
+       
+                </Tab.Pane>
+              </div>
+            </Tab>
+          </Tabs>
+        </div>
       </div>
     );
   }
