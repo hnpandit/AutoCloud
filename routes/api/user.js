@@ -63,6 +63,16 @@ userRouter
           : res.status(200).json(data)
       )
       .catch(err => res.status(500).next(err));
+  })
+  .get("/expdate/:days", (req, res, next) => {
+    userController
+      .fetchByExpDate(req.params.days)
+      .then(data =>
+        data.length < 1
+          ? res.status(404).json({ message: `No User Found` })
+          : res.status(200).json(data)
+      )
+      .catch(err => res.status(500).next(err));
   });
 
 module.exports = userRouter;

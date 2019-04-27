@@ -1,5 +1,12 @@
 const db = require("../models");
 
+const addDays = async (date, days) => {
+  const result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
+};
+
+
 module.exports = {
   create: async body => {
     try {
@@ -63,6 +70,25 @@ module.exports = {
       return dbUser;
     } catch (err) {
       return err;
+    }
+  },
+  fetchByExpDate: async days => {
+    try {
+      const notifiableDate = await addDays(new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate()), days) ;
+      const dbUser = await db.User.find()
+        .populate({
+          path: 'cars',
+          model: 'Car',
+          populate: {
+            path: 'docs',
+            model: 'Document',
+            match: {match: { expirationDate: { $eq: notifiableDate }},}
+          }
+        })
+        .then(data => data);
+      return dbUser;
+    } catch (err) {
+      return err;      
     }
   }
 };
