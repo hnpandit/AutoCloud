@@ -63,6 +63,7 @@ class UserLogin extends Component {
                 >
                   Log In
                 </button>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
               </form>
               <a href="/register">Register</a>
             </div>
