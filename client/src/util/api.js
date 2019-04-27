@@ -18,7 +18,7 @@ export default {
     return axios.post("/api/users", userData);
   },
   // Updates an existing user to the database
-  updateUser: function(userData) {
-    return axios.put("/api/users" + id, userData);
-  }
+  //updateUser: function(userData) {
+  //  return axios.put("/api/users" + id, userData);
+  //}
 };

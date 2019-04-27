@@ -1,17 +1,54 @@
 import React, { Component } from "react";
 import "./UserRegistration.css";
+import api from "../../util/api";
 //import Body from "../../Components/Body/Body";
 // import Form from 'react-bootstrap/Form';
 // import Container from 'react-bootstrap/Container';
 
 class UserRegistration extends Component {
   state = {
+    user: [],
+
     firstName: "",
     lastName: "",
-    username: "",
+    userName: "",
     email: "",
-    password: ""
+    password: "",
+    phoneNumber: "",
+    zipCode: ""
   };
+
+  /*
+  componentDidMount() {
+		this.loadItems();
+  }
+  */
+
+  loadUser = () => {
+		api.getUserById()
+			.then(res =>
+				this.setState({
+					user: res.data,
+					firstName: "",
+          lastName: "",
+          userName: "",
+          email: "",
+          password: "",
+          phoneNumber: "",
+          zipCode: ""
+				})
+			)
+			.catch(err => console.log(err));
+	};
+  
+
+
+
+
+
+  
+  
+
 
   change = event => {
     this.setState({
@@ -59,8 +96,8 @@ class UserRegistration extends Component {
 
                 <div className="form-group">
                   <input
-                    name="username"
-                    value={this.state.username}
+                    name="userName"
+                    value={this.state.userName}
                     onChange={e => this.change(e)}
                     type="email"
                     className="form-control"
@@ -90,6 +127,30 @@ class UserRegistration extends Component {
                     className="form-control"
                     placeholder='Password'
                     id="password"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <input
+                    name="phoneNumber"
+                    value={this.state.phoneNumber}
+                    onChange={e => this.change(e)}
+                    type="phoneNumber"
+                    className="form-control"
+                    placeholder='Phone number'
+                    id="phoneNumber"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <input
+                    name="zipCode"
+                    value={this.state.zipCode}
+                    onChange={e => this.change(e)}
+                    type="zipCode"
+                    className="form-control"
+                    placeholder='zip code'
+                    id="zipCode"
                   />
                 </div>
 

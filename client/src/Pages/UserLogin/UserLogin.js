@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./UserLogin.css";
 
+//{'<script src="https://apis.google.com/js/platform.js" async defer></script>'}
+  
 class UserLogin extends Component {
   state = {
     username: "",
@@ -18,6 +20,7 @@ class UserLogin extends Component {
     e.preventDefault();
     console.log(this.state);
   };
+
   
 
   
@@ -63,6 +66,7 @@ class UserLogin extends Component {
                 >
                   Log In
                 </button>
+                <div className="g-signin2" data-onsuccess="onSignIn"></div>
               </form>
               <a href="/register">Register</a>
             </div>
