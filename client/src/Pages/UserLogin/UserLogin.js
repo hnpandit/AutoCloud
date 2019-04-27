@@ -31,6 +31,9 @@ class UserLogin extends Component {
               <h1>Auto Cloud</h1>
               <div className="g-signin2"  id="google-btn"  data-onsuccess="onSignIn"></div>
               <p>Sign in wih Google</p>
+
+              {/*Added signout button for testing purposes*/}
+              <a href="#" onclick="signOut();">Sign out</a>
               {/* <p>Log in</p> */}
               {/*
               <form>
