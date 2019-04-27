@@ -31,7 +31,7 @@ db.User.remove({})
       if (err) console.log(err);
 
       const car = new db.Car({
-        name: "Toyota",
+        carMake: "Toyota",
         model: "Rav4",
         year: 2019,
         docs: result.map(doc => doc._id)
