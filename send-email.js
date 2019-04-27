@@ -3,7 +3,7 @@ const crypto = require("crypto");
 
 const algorithm = 'aes-256-ctr';
 const password = process.env.cryptokey || 'secretPassword';
-const encryptedPassword = '0d72b49f6eb7da2e';
+const encryptedPassword = '3e64a2c21dea8c7ac4a09b371bd1';
 
 const transport = nodemailer.createTransport({
     service: 'Gmail',
