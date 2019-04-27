@@ -20,6 +20,12 @@ class UserLogin extends Component {
     console.log(this.state);
   };
   */
+  signOut = ()=> {
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log('User signed out.');
+  });
+}
 
   render() {
     return (
@@ -33,7 +39,7 @@ class UserLogin extends Component {
               <p>Sign in wih Google</p>
 
               {/*Added signout button for testing purposes*/}
-              <a href="#" onClick="signOut();">Sign out</a>
+              <a href="#" onClick={this.signOut}>Sign out</a>
               {/* <p>Log in</p> */}
               {/*
               <form>
