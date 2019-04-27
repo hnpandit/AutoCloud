@@ -22,7 +22,6 @@ export default {
     return axios.put("/api/users" + id, userData);
   },
 
-
   // Gets all cars
   getCars: function(query) {
     return axios.get("/api/cars", query);
@@ -33,6 +32,7 @@ export default {
   },
   // Saves a new car to the database
   saveCar: function(carData) {
+    console.log('anything')
     return axios.post("/api/cars", carData);
   },
   // Updates an existing car to the database

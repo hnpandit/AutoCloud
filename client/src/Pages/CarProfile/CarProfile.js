@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./CarProfile.css";
+import API from "../../util/api";
 // import Navbar from "./Components/Navbar";
 // import Footer from "./Components/Footer";
 
@@ -7,7 +8,10 @@ class CarProfile extends Component {
   state = {
     model: "",
     carMake: "",
-    year: ""
+    year: "",
+    regExp: "",
+    licExp: "",
+    inspExp: ""
   };
 
   change = event => {
@@ -18,6 +22,14 @@ class CarProfile extends Component {
 
   submitCarProfile = e => {
     e.preventDefault();
+    API.saveCar({
+      model: this.state.model,
+      carMake: this.state.carMake,
+      year: parseInt(this.state.year),
+      regExp:  this.state.regExp,
+      licExp: this.state.licExp,
+      inspExp: this.state.inspExp,
+    })
     console.log(this.state);
   };
 
@@ -60,9 +72,39 @@ class CarProfile extends Component {
                     placeholder="Year"
                   />
                 </div>
+                <div className="form-group">
+                  <input
+                    name="regExp"
+                    value={this.state.regExp}
+                    onChange={event => this.change(event)}
+                    type="text"
+                    className="form-control"
+                    placeholder="Registration Expiration"
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    name="licExp"
+                    value={this.state.licExp}
+                    onChange={event => this.change(event)}
+                    type="text"
+                    className="form-control"
+                    placeholder="License Expiration"
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    name="inspExp"
+                    value={this.state.inspExp}
+                    onChange={event => this.change(event)}
+                    type="text"
+                    className="form-control"
+                    placeholder="Inspection Expiration"
+                  />
+                </div>
 
                 <button
-                  onClick={event => this.submitCarProfile(event)}
+                  onClick={e => this.submitCarProfile(e)}
                   type="submit"
                   className="btn"
                 >
