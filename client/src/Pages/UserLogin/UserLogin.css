@@ -16,10 +16,25 @@
 	margin-bottom: 50px;
 }
 
+#google-btn {
+	margin-top: 90px;
+	margin-left: 225px;
+	text-align: center;
+}
+
 /***MAIN***/
 h1 {
-	font-size: 45px;
+	font-size: 90px;
 	margin-bottom: 20px;
+}
+
+h3 {
+	font-size: 60px;
+}
+
+p {
+	margin-top: 5px;
+	font-size: 20px;
 }
 
 .form-control {
