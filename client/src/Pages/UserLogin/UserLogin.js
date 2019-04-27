@@ -33,7 +33,7 @@ class UserLogin extends Component {
               <p>Sign in wih Google</p>
 
               {/*Added signout button for testing purposes*/}
-              <a href="#" onclick="signOut();">Sign out</a>
+              <a href="#" onClick="signOut();">Sign out</a>
               {/* <p>Log in</p> */}
               {/*
               <form>
