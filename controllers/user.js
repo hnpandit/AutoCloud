@@ -1,11 +1,12 @@
 const db = require("../models");
 
-const addDays = async (date, days) => {
-  const result = new Date(date);
-  result.setDate(result.getDate() + days);
+const addDays = async (days) => {
+  const today = new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate());
+  const todayEpoch = new Date(today);
+  todayEpoch.setDate(todayEpoch.getDate() + parseInt(days));
+  const result = new Date(todayEpoch.setUTCHours(0,0,0,0)).toISOString();
   return result;
 };
-
 
 module.exports = {
   create: async body => {
@@ -74,7 +75,7 @@ module.exports = {
   },
   fetchByExpDate: async days => {
     try {
-      const notifiableDate = await addDays(new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate()), days) ;
+      const notifiableDate = await addDays(days) ;
       const dbUser = await db.User.find()
         .populate({
           path: 'cars',
@@ -82,7 +83,7 @@ module.exports = {
           populate: {
             path: 'docs',
             model: 'Document',
-            match: {match: { expirationDate: { $eq: notifiableDate }},}
+            match: { expirationDate: { $eq: notifiableDate }},
           }
         })
         .then(data => data);
