@@ -29,8 +29,12 @@ class UserLogin extends Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
+              <h3>Welcome to </h3>
               <h1>Auto Cloud</h1>
+              <div className="g-signin2"  id="google-btn"  data-onsuccess="onSignIn"></div>
+              <p>Sign in wih Google</p>
               {/* <p>Log in</p> */}
+              {/*
               <form>
                 <div className="form-group">
                   <input
@@ -66,6 +70,7 @@ class UserLogin extends Component {
                 <div class="g-signin2" data-onsuccess="onSignIn"></div>
               </form>
               <a href="/register">Register</a>
+              */}
             </div>
           </div>
         </div>
