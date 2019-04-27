@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./CarProfile.css";
+// import Navbar from "./Components/Navbar";
+// import Footer from "./Components/Footer";
 
 class CarProfile extends Component {
   state = {

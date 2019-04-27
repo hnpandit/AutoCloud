@@ -30,7 +30,7 @@ class UserLogin extends Component {
           <div className="row">
             <div className="col-lg-12">
               <h1>Auto Cloud</h1>
-              <p>Log in</p>
+              {/* <p>Log in</p> */}
               <form>
                 <div className="form-group">
                   <input

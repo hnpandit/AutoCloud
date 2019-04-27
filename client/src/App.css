@@ -16,3 +16,12 @@
 .App-link {
   color: #61dafb;
 }
+
+body {
+  background: url(https://images.pond5.com/large-beam-dust-footage-084876117_prevstill.jpeg)
+  no-repeat center; /*"fixed" value could be added only with "background" property*/
+  background-size: cover;
+	font-family: 'Quicksand', sans-serif;
+
+}
+
