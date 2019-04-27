@@ -59,18 +59,6 @@ class UserRegistration extends Component {
 
                 <div className="form-group">
                   <input
-                    name="username"
-                    value={this.state.username}
-                    onChange={e => this.change(e)}
-                    type="email"
-                    className="form-control"
-                    placeholder='Username'
-                    id="username"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <input
                     name="email"
                     value={this.state.email}
                     onChange={e => this.change(e)}
@@ -78,18 +66,6 @@ class UserRegistration extends Component {
                     className="form-control"
                     placeholder='E-Mail'
                     id="email"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <input
-                    name="password"
-                    value={this.state.password}
-                    onChange={e => this.change(e)}
-                    type="password"
-                    className="form-control"
-                    placeholder='Password'
-                    id="password"
                   />
                 </div>
 
