@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./UserRegistration.css";
-import api from "../../util/api";
+import API from "../../util/api";
 //import Body from "../../Components/Body/Body";
 // import Form from 'react-bootstrap/Form';
 // import Container from 'react-bootstrap/Container';
 
 class UserRegistration extends Component {
   state = {
+    users: [],
     firstName: "",
     lastName: "",
     email: "",
@@ -19,14 +20,18 @@ class UserRegistration extends Component {
     });
   };
 
+  /*
   onSubmit = e => {
     e.preventDefault();
     console.log(this.state);
   };
+  */
+
+  
 
   handleFormSubmit = event => {
     event.preventDefault();
-    api
+    API
       .saveUser({
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -36,7 +41,6 @@ class UserRegistration extends Component {
       .then(res => {
         //this.loadItems()
         console.log("logging res: ", res);
-        console.log(this.state);
       })
       .catch(err => console.log("logging err: ", err));
   };
@@ -91,10 +95,10 @@ class UserRegistration extends Component {
                     name="phoneNumber"
                     value={this.state.phoneNumber}
                     onChange={e => this.change(e)}
-                    type="email"
+                    type="number"
                     className="form-control"
                     placeholder="Phone number"
-                    id="email"
+                    id="phone-number"
                   />
                 </div>
 
