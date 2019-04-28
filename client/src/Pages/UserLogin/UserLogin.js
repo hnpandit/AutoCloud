@@ -13,19 +13,20 @@ class UserLogin extends Component {
       [event.target.name]: event.target.value
     });
   };
-
   
   onSubmit = e => {
     e.preventDefault();
     console.log(this.state);
   };
+  
+
+  signOut = () => {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function() {
+      console.log("User signed out.");
+    });
+  };
   */
-  signOut = ()=> {
-  var auth2 = gapi.auth2.getAuthInstance();
-  auth2.signOut().then(function () {
-    console.log('User signed out.');
-  });
-}
 
   render() {
     return (
@@ -35,11 +36,17 @@ class UserLogin extends Component {
             <div className="col-lg-12">
               <h3>Welcome to </h3>
               <h1>Auto Cloud</h1>
-              <div className="g-signin2"  id="google-btn"  data-onsuccess="onSignIn"></div>
+              <div
+                className="g-signin2"
+                id="google-btn"
+                data-onsuccess="onSignIn"
+              />
               <p>Sign in wih Google</p>
 
               {/*Added signout button for testing purposes*/}
-              <a href="#" onClick={this.signOut}>Sign out</a>
+              <a href="/" onClick={this.signOut}>
+                Sign out
+              </a>
               {/* <p>Log in</p> */}
               {/*
               <form>
@@ -87,5 +94,3 @@ class UserLogin extends Component {
 }
 
 export default UserLogin;
-
-
