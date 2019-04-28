@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const carSchema = new Schema(
 	{
-		make: { type: String, required: true },
-		model: { type: String, required: true },
-		year: { type: Number, required: true },
+		make: { type: String, lowercase: true, required: true },
+		model: { type: String, lowercase: true, required: true },
+		year: { type: Number, lowercase: true, required: true },
 		docs: [
 			{
 				type: Schema.Types.ObjectId,
