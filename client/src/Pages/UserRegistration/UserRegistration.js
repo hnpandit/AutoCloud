@@ -1,25 +1,28 @@
 import React, { Component } from "react";
+import {Redirect} from 'react-router-dom';
 import "./UserRegistration.css";
 import API from "../../util/api";
-//import Body from "../../Components/Body/Body";
-// import Form from 'react-bootstrap/Form';
-// import Container from 'react-bootstrap/Container';
 
 class UserRegistration extends Component {
   state = {
-    users: [],
     firstName: "",
     lastName: "",
     email: "",
-    phoneNumber: ""
+    phoneNumber: "",
+    redirect: false
   };
 
-  change = event => {
+  setRedirect = () => {
     this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+      redirect: true
+    })
+  }
 
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/carProfile'/>
+    }
+  }
   /*
   onSubmit = e => {
     e.preventDefault();
@@ -27,22 +30,27 @@ class UserRegistration extends Component {
   };
   */
 
-  
+  change = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API
-      .saveUser({
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        phoneNumber: this.state.phoneNumber
-      })
+
+    API.saveUser({
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      phoneNumber: this.state.phoneNumber
+    })
       .then(res => {
         //this.loadItems()
-        console.log("logging res: ", res);
+        console.log("Logging created user: ", res);
       })
-      .catch(err => console.log("logging err: ", err));
+      .catch(err => console.log("logging error: ", err));
+      this.setRedirect();
   };
 
   render() {
@@ -62,7 +70,7 @@ class UserRegistration extends Component {
                     type="text"
                     className="form-control"
                     id="first"
-                    placeholder="First Name"
+                    placeholder="First Name (required)"
                   />
                 </div>
 
@@ -73,7 +81,7 @@ class UserRegistration extends Component {
                     onChange={e => this.change(e)}
                     type="text"
                     className="form-control"
-                    placeholder="Last Name"
+                    placeholder="Last Name (required)"
                     id="last"
                   />
                 </div>
@@ -85,7 +93,7 @@ class UserRegistration extends Component {
                     onChange={e => this.change(e)}
                     type="email"
                     className="form-control"
-                    placeholder="E-Mail"
+                    placeholder="E-Mail (required)"
                     id="email"
                   />
                 </div>
@@ -97,11 +105,12 @@ class UserRegistration extends Component {
                     onChange={e => this.change(e)}
                     type="number"
                     className="form-control"
-                    placeholder="Phone number"
+                    placeholder="Phone number (required)"
                     id="phone-number"
                   />
                 </div>
 
+                {this.renderRedirect()}
                 <button
                   onClick={this.handleFormSubmit}
                   type="submit"
