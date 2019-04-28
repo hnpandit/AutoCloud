@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./UserRegistration.css";
+import api from "../../util/api";
 //import Body from "../../Components/Body/Body";
 // import Form from 'react-bootstrap/Form';
 // import Container from 'react-bootstrap/Container';
@@ -8,9 +9,8 @@ class UserRegistration extends Component {
   state = {
     firstName: "",
     lastName: "",
-    username: "",
     email: "",
-    password: ""
+    phoneNumber: ""
   };
 
   change = event => {
@@ -22,6 +22,23 @@ class UserRegistration extends Component {
   onSubmit = e => {
     e.preventDefault();
     console.log(this.state);
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    api
+      .saveUser({
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        phoneNumber: this.state.phoneNumber
+      })
+      .then(res => {
+        //this.loadItems()
+        console.log("logging res: ", res);
+        console.log(this.state);
+      })
+      .catch(err => console.log("logging err: ", err));
   };
 
   render() {
@@ -41,7 +58,7 @@ class UserRegistration extends Component {
                     type="text"
                     className="form-control"
                     id="first"
-                    placeholder='First Name'
+                    placeholder="First Name"
                   />
                 </div>
 
@@ -52,7 +69,7 @@ class UserRegistration extends Component {
                     onChange={e => this.change(e)}
                     type="text"
                     className="form-control"
-                    placeholder='Last Name'
+                    placeholder="Last Name"
                     id="last"
                   />
                 </div>
@@ -64,13 +81,25 @@ class UserRegistration extends Component {
                     onChange={e => this.change(e)}
                     type="email"
                     className="form-control"
-                    placeholder='E-Mail'
+                    placeholder="E-Mail"
+                    id="email"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <input
+                    name="phoneNumber"
+                    value={this.state.phoneNumber}
+                    onChange={e => this.change(e)}
+                    type="email"
+                    className="form-control"
+                    placeholder="Phone number"
                     id="email"
                   />
                 </div>
 
                 <button
-                  onClick={e => this.onSubmit(e)}
+                  onClick={this.handleFormSubmit}
                   type="submit"
                   className="btn"
                 >
