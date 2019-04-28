@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
 	{
-		firstName: { type: String, required: true },
-		lastName: { type: String, required: true },
-		email: { type: String, required: true, index: true, unique: true },
+		firstName: { type: String, lowercase: true, required: true },
+		lastName: { type: String, lowercase: true, required: true },
+		email: {type: String, lowercase: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], unique: true, index: true},
 		phoneNumber: { type: String, required: true },
 		cars: [
 			{
