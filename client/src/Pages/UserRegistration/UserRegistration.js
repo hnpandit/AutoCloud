@@ -46,11 +46,12 @@ class UserRegistration extends Component {
       phoneNumber: this.state.phoneNumber
     })
       .then(res => {
-        //this.loadItems()
-        console.log("Logging created user: ", res);
+        if(res.data._id) {
+          this.setRedirect();
+        }
+        console.log("Logging created user: ",res );
       })
       .catch(err => console.log("logging error: ", err));
-      this.setRedirect();
   };
 
   render() {
@@ -103,7 +104,7 @@ class UserRegistration extends Component {
                     name="phoneNumber"
                     value={this.state.phoneNumber}
                     onChange={e => this.change(e)}
-                    type="number"
+                    type="tel"
                     className="form-control"
                     placeholder="Phone number (required)"
                     id="phone-number"

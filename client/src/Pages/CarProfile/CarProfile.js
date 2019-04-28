@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Redirect} from 'react-router-dom';
 import "./CarProfile.css";
 import API from "../../util/api";
 // import Navbar from "./Components/Navbar";
@@ -11,8 +12,21 @@ class CarProfile extends Component {
     year: "",
     regExp: "",
     licExp: "",
-    inspExp: ""
+    inspExp: "",
+    redirect: false
   };
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/dashboard'/>
+    }
+  }
 
   change = event => {
     this.setState({
@@ -30,7 +44,14 @@ class CarProfile extends Component {
       licExp: this.state.licExp,
       inspExp: this.state.inspExp,
     })
-    console.log(this.state);
+    .then(res => {
+      if(res.data._id) {
+        this.setRedirect();
+      }
+      console.log("Logging added car: ",res );
+    })
+    .catch(err => console.log("logging error: ", err));
+    //console.log(this.state);
   };
 
   render() {
@@ -103,6 +124,7 @@ class CarProfile extends Component {
                   />
                 </div>
 
+                {this.renderRedirect()}
                 <button
                   onClick={e => this.submitCarProfile(e)}
                   type="submit"
