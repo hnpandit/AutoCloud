@@ -32,7 +32,6 @@ export default {
 	},
 	// Saves a new car to the database
 	saveCar: function(carData) {
-		console.log('anything');
 		return axios.post('/api/cars', carData);
 	},
 	// Updates an existing car to the database

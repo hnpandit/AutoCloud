@@ -5,12 +5,31 @@ import API from "../../util/api";
 
 class UserRegistration extends Component {
   state = {
+    user: [],
     firstName: "",
     lastName: "",
     email: "",
     phoneNumber: "",
     redirect: false
   };
+  /*
+  componentDidMount() {
+    this.loadItems();
+  }
+
+  loadItems = () => {
+    API.getItems()
+      .then(res =>
+        this.setState({
+          items: res.data,
+          note: "",
+          author: ""
+        })
+      )
+      .catch(err => console.log(err));
+  };
+  */
+
 
   setRedirect = () => {
     this.setState({
@@ -47,8 +66,18 @@ class UserRegistration extends Component {
     })
       .then(res => {
         if (res.data._id) {
+          this.setState({
+            user: res.data,
+            firstName: "",
+            lastName: "",
+            email: "",
+            phoneNumber: "",
+            //redirect: false
+            
+          })
           this.setRedirect();
           console.log("Logging created user: ", res);
+          //console.log(this.state.user);
         }
       })
       .catch(err => console.log("logging error: ", err));
