@@ -7,6 +7,11 @@ import API from "../../util/api";
 
 class CarProfile extends Component {
   state = {
+    
+    user: [{
+      _id: "5cc72c853a2fcbff1b03246f"
+    }],
+    
     model: "",
     make: "",
     year: "",
@@ -45,10 +50,12 @@ class CarProfile extends Component {
       inspExp: this.state.inspExp
     })
       .then(res => {
-        if (res.data._id) {
+        //if (res.data._id) {
+        //  const carId = res.data._id;
+        //  API.updateUser(this.state.user._id, {cars: carId})
           this.setRedirect();
           console.log("Logging added vehicle: ", res);
-        }
+        //}
       })
       .catch(err => console.log("logging error: ", err));
   };
@@ -69,7 +76,7 @@ class CarProfile extends Component {
                     onChange={event => this.change(event)}
                     type="text"
                     className="form-control"
-                    placeholder=" Car Manufacturer"
+                    placeholder=" Car Manufacturer (required)"
                   />
                 </div>
                 <div className="form-group">
@@ -79,7 +86,7 @@ class CarProfile extends Component {
                     onChange={event => this.change(event)}
                     type="text"
                     className="form-control"
-                    placeholder="Model"
+                    placeholder="Model (required)"
                   />
                 </div>
                 <div className="form-group">
@@ -89,7 +96,7 @@ class CarProfile extends Component {
                     onChange={event => this.change(event)}
                     type="text"
                     className="form-control"
-                    placeholder="Year"
+                    placeholder="Year (required)"
                   />
                 </div>
                 <div className="form-group">
