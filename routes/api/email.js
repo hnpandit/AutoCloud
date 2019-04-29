@@ -14,9 +14,7 @@ emailRouter.get('/notify', (req, res, next) => {
 		'Welcome to RCB AutoCloud',
 		message,
 	);
-
 	res.send('Email sent.');
-	ç;
 });
 
 module.exports = emailRouter;
