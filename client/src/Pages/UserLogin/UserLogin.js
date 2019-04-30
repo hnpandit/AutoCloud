@@ -18,7 +18,7 @@ class UserLogin extends Component {
     e.preventDefault();
     console.log(this.state);
   };
-  
+  */
 
   signOut = () => {
     var auth2 = gapi.auth2.getAuthInstance();
@@ -28,7 +28,7 @@ class UserLogin extends Component {
     removeCookies();
     sessionStorage.removeItem("email");
   };
-  */
+  
 
   //Added to remove cookies from browser
   
