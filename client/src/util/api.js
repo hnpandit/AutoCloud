@@ -48,8 +48,8 @@ export default {
 		return axios.get('/api/documents/id/' + id);
 	},
 	// Saves a new document to the database
-	saveDocument: function(documentData) {
-		return axios.post('/api/documents', documentData);
+	saveDocument: function(carId, documentData) {
+		return axios.post('/api/documents/carId'+carId, documentData);
 	},
 	// Updates an existing document to the database
 	updateDocument: function(id, documentData) {
