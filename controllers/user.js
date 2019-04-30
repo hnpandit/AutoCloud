@@ -31,6 +31,18 @@ module.exports = {
 			return err;
 		}
 	},
+	// Adding controller to push cars id into user
+	pushCarsById: async (userId, carId) => {
+		try {
+			const dbUser = await db.User.findOneAndUpdate({ _id: userId }, {$push: {cars: carId}}).then(
+				(data) => data,
+			);
+			return dbUser;
+		} catch (err) {
+			return err;
+		}
+	},
+
 	fetchAll: async (query) => {
 		try {
 			const dbUser = await db.User.find(query)

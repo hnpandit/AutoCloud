@@ -1,9 +1,19 @@
 const db = require('../models');
 
 module.exports = {
-	create: async (body) => {
+	create: async (userId, body) => {
 		try {
-			const dbCar = await db.Car.create(body).then((data) => data);
+			const car = await new db.Car(body);
+			const dbCar = await car
+				.save()
+				.then((car) => {
+					console.log(userId)
+					return db.User.findById(userId).then((user) => {
+						user.cars.push(car);
+						return user.save();
+					});
+				})
+				.then((data) => data);
 			return dbCar;
 		} catch (err) {
 			return err;

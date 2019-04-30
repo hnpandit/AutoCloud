@@ -7,10 +7,13 @@ import API from "../../util/api";
 
 class CarProfile extends Component {
   state = {
-    
+    /*
     user: [{
-      _id: "5cc72c853a2fcbff1b03246f"
+      _id: "5cc787aafbf51b0e71138d7e"
     }],
+    */
+   
+    userId: "",
     
     model: "",
     make: "",
@@ -35,26 +38,25 @@ class CarProfile extends Component {
 
   change = event => {
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
+      userId: sessionStorage.getItem("userId")
     });
   };
 
   submitCarProfile = e => {
     e.preventDefault();
-    API.saveCar({
+    API.saveCar( this.state.userId,{
       model: this.state.model,
       make: this.state.make,
       year: parseInt(this.state.year),
-      regExp: this.state.regExp,
-      licExp: this.state.licExp,
-      inspExp: this.state.inspExp
     })
       .then(res => {
         //if (res.data._id) {
-        //  const carId = res.data._id;
-        //  API.updateUser(this.state.user._id, {cars: carId})
+          //const carId = res.data._id;
+          //API.updateUser(this.state.user._id, {cars: carId})
           this.setRedirect();
           console.log("Logging added vehicle: ", res);
+          console.log('logging this.state.userId:', this.state.userId);
         //}
       })
       .catch(err => console.log("logging error: ", err));
@@ -99,36 +101,7 @@ class CarProfile extends Component {
                     placeholder="Year (required)"
                   />
                 </div>
-                <div className="form-group">
-                  <input
-                    name="regExp"
-                    value={this.state.regExp}
-                    onChange={event => this.change(event)}
-                    type="text"
-                    className="form-control"
-                    placeholder="Registration Expiration"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    name="licExp"
-                    value={this.state.licExp}
-                    onChange={event => this.change(event)}
-                    type="text"
-                    className="form-control"
-                    placeholder="License Expiration"
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    name="inspExp"
-                    value={this.state.inspExp}
-                    onChange={event => this.change(event)}
-                    type="text"
-                    className="form-control"
-                    placeholder="Inspection Expiration"
-                  />
-                </div>
+                
 
                 {this.renderRedirect()}
                 <button
