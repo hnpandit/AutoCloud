@@ -1,6 +1,7 @@
 // Dependencies
 const userRouter = require('express').Router();
 const userController = require('../../controllers/user');
+const sms = require('../../utils/sms');
 
 // User End-points
 userRouter
@@ -70,7 +71,8 @@ userRouter
 			.then((data) =>
 				data.length < 1
 					? res.status(404).json({ message: `No User Found` })
-					: res.status(200).json(data),
+					: (sms.sendSMS(data),
+							res.status(200).json(data)),
 			)
 			.catch((err) => res.status(500).next(err));
 	});
