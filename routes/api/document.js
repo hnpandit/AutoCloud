@@ -18,9 +18,10 @@ documentRouter
 			)
 			.catch((err) => res.status(500).next(err));
 	})
-	.post('/', (req, res, next) => {
+	.post('/carId/:carId', (req, res, next) => {
+		console.log(req.params.carId);
 		documentController
-			.create(req.body)
+			.create(req.params.carId, req.body)
 			.then((data) =>
 				data.length < 1
 					? res.status(404).json({ message: `No Document Found` })
