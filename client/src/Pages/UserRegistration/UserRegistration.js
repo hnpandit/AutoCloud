@@ -78,9 +78,8 @@ class UserRegistration extends Component {
           sessionStorage.setItem("userId", res.data._id);
           this.setRedirect();
           console.log("Logging created user: ", res);
-          //console.log(this.state.userId);
         }
-        console.log('logging this.state.userId', this.state.userId);
+        //console.log('logging this.state.userId', this.state.userId);
       })
       .catch(err => console.log("logging error: ", err));
   };

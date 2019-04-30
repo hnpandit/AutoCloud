@@ -1,18 +1,16 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import "./CarProfile.css";
+import "./DocumentProfile.css";
 import API from "../../util/api";
 
-class CarProfile extends Component {
+class DocumentProfile extends Component {
   state = {
-    userId: "",
-    
-    model: "",
-    make: "",
-    year: "",
-    regExp: "",
-    licExp: "",
-    inspExp: "",
+    carId: "",
+
+    type: "",
+    docId: "",
+    expirationDate: "",
+    notificationDay: "",
     redirect: false
   };
 
@@ -24,83 +22,94 @@ class CarProfile extends Component {
 
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to="/documentProfile" />;
+      return <Redirect to="/dashboard" />;
     }
   };
 
   change = event => {
     this.setState({
       [event.target.name]: event.target.value,
-      userId: sessionStorage.getItem("userId")
+      carId: sessionStorage.getItem("carId")
     });
   };
 
-  submitCarProfile = e => {
+  submitDocumentProfile = e => {
     e.preventDefault();
-    API.saveCar( this.state.userId,{
-      model: this.state.model,
-      make: this.state.make,
-      year: parseInt(this.state.year),
+    API.saveDocument(this.state.carId, {
+      type: this.state.type,
+      docId: this.state.docId,
+      expirationDate: this.state.expirationDate,
+      notificationDay: this.state.notificationDay
     })
       .then(res => {
         if (res.data._id) {
-          sessionStorage.setItem("carId", res.data.cars[0]._id);
           this.setRedirect();
           console.log("Logging added vehicle: ", res);
-          //console.log('logging this.state.userId:', this.state.userId);
+          //console.log('logging this.state.userId:', this.state.carId);
         }
       })
       .catch(err => console.log("logging error: ", err));
+      
   };
 
   render() {
     return (
-      <div id="carProfile">
+      <div id="docProfile">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
               <h1>AutoCloud</h1>
-              <p>Add a Car to your Profile</p>
+              <p>Add a document to your Profile</p>
               <form>
                 <div className="form-group">
                   <input
-                    name="make"
-                    value={this.state.make}
+                    name="type"
+                    value={this.state.type}
                     onChange={event => this.change(event)}
                     type="text"
                     className="form-control"
-                    placeholder=" Car Manufacturer (required)"
+                    placeholder=" Name of document (e.g. Registration)"
                   />
                 </div>
                 <div className="form-group">
                   <input
-                    name="model"
-                    value={this.state.model}
+                    name="docId"
+                    value={this.state.docId}
                     onChange={event => this.change(event)}
                     type="text"
                     className="form-control"
-                    placeholder="Model (required)"
+                    placeholder="Document Id#"
                   />
                 </div>
                 <div className="form-group">
                   <input
-                    name="year"
-                    value={this.state.year}
+                    name="expirationDate"
+                    value={this.state.expirationDate}
                     onChange={event => this.change(event)}
-                    type="text"
+                    type="date"
                     className="form-control"
-                    placeholder="Year (required)"
+                    placeholder="Expiration date (mm/dd/yyyy)"
                   />
                 </div>
-                
+
+                <div className="form-group">
+                  <input
+                    name="notificationDay"
+                    value={this.state.notificationDay}
+                    onChange={event => this.change(event)}
+                    type="number"
+                    className="form-control"
+                    placeholder="Notification day"
+                  />
+                </div>
 
                 {this.renderRedirect()}
                 <button
-                  onClick={e => this.submitCarProfile(e)}
+                  onClick={e => this.submitDocumentProfile(e)}
                   type="submit"
                   className="btn"
                 >
-                  Add Vehicle
+                  Add Document
                 </button>
               </form>
             </div>
@@ -111,4 +120,4 @@ class CarProfile extends Component {
   }
 }
 
-export default CarProfile;
+export default DocumentProfile;
