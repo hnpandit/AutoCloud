@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './UserLogin.css';
 
-global gapi;
+/* global gapi */
 
 class UserLogin extends Component {
 	/*
