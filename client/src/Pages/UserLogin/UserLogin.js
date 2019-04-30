@@ -26,7 +26,7 @@ class UserLogin extends Component {
       console.log("User signed out.");
     });
     removeCookies();
-
+    sessionStorage.removeItem("email");
   };
 
   //Added to remove cookies from browser
