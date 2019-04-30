@@ -7,7 +7,7 @@ module.exports = {
 			const dbCar = await car
 				.save()
 				.then((car) => {
-					console.log(userId)
+					console.log(userId);
 					return db.User.findById(userId).then((user) => {
 						user.cars.push(car);
 						return user.save();
