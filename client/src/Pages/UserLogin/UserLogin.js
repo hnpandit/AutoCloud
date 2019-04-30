@@ -22,18 +22,7 @@ class UserLogin extends Component {
   };
   */
 
-  signOut = () => {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log("User signed out.");
-    });
-    removeCookies();
-    sessionStorage.removeItem("email");
-  };
-  
-
   //Added to remove cookies from browser
-  
  removeCookies = () => {
   var res = document.cookie;
   var multiple = res.split(";");
@@ -41,8 +30,16 @@ class UserLogin extends Component {
     var key = multiple[i].split("=");
     document.cookie = key[0] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
   }
-}
-
+ };	 
+	 
+  signOut = () => {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log("User signed out.");
+    });
+    this.removeCookies();
+    sessionStorage.removeItem("email");
+  };  
 
 render() {
   return (
