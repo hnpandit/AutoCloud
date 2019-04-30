@@ -24,12 +24,11 @@ carRouter
 			)
 			.catch((err) => res.status(500).next(err));
 	})
-	.post('/', (req, res, next) => {
-		console.log('Route Hit');
+	.post('/userId/:userId', (req, res, next) => {
+		console.log(req.params.userId);
 		carController
-			.create(req.body)
+			.create(req.params.userId, req.body)
 			.then((data) => {
-				console.log(data);
 				data.length < 1
 					? res.status(404).json({ message: `No Car Found` })
 					: res.status(201).json(data);

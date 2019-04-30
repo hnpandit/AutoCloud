@@ -13,7 +13,7 @@ export default {
 	getUserByEmail: function(email) {
 		return axios.get('/api/users/email/' + email);
 	},
-	// Saves a new user to the database
+	// Saves a new user to the database (test)
 	saveUser: function(userData) {
 		return axios.post('/api/users', userData);
 	},
@@ -31,12 +31,12 @@ export default {
 		return axios.get('/api/cars/id/' + id);
 	},
 	// Saves a new car to the database
-	saveCar: function(carData) {
-		return axios.post('/api/cars', carData);
+	saveCar: function(userId, carData) {
+		return axios.post('/api/cars/userId/'+userId, carData);
 	},
 	// Updates an existing car to the database
-	updateCar: function(id, carData) {
-		return axios.put('/api/cars' + id, carData);
+	updateCar: function(id, carData, userId) {
+		return axios.put('/api/cars' + id, carData, userId);
 	},
 
 	// Gets all documents

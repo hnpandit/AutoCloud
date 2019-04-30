@@ -5,7 +5,7 @@ import API from "../../util/api";
 
 class UserRegistration extends Component {
   state = {
-    user: [],
+    userId: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -67,7 +67,7 @@ class UserRegistration extends Component {
       .then(res => {
         if (res.data._id) {
           this.setState({
-            user: res.data,
+            userId: res.data._id,
             firstName: "",
             lastName: "",
             email: "",
@@ -75,10 +75,12 @@ class UserRegistration extends Component {
             //redirect: false
             
           })
+          sessionStorage.setItem("userId", res.data._id);
           this.setRedirect();
           console.log("Logging created user: ", res);
-          //console.log(this.state.user);
+          //console.log(this.state.userId);
         }
+        console.log('logging this.state.userId', this.state.userId);
       })
       .catch(err => console.log("logging error: ", err));
   };
