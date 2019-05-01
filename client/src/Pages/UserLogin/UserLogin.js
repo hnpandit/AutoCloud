@@ -41,6 +41,8 @@ class UserLogin extends Component {
     console.log(this.state);
   };
   */
+
+  /*
   onSignIn = googleUser => {
     var profile = googleUser.getBasicProfile();
     console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -59,6 +61,9 @@ class UserLogin extends Component {
     } 
   };
 
+  */
+  
+
   //Added to remove cookies from browser
   removeCookies = () => {
     var res = document.cookie;
@@ -70,6 +75,7 @@ class UserLogin extends Component {
   };
 
   takeToRegister = () => {
+    console.log("take to register hit");
     if (this.state.redirect)
     return <Redirect to="/register" />;
   }
@@ -84,6 +90,7 @@ class UserLogin extends Component {
     this.removeCookies();
     sessionStorage.removeItem("email");
   };
+  
 
   render() {
     return (
@@ -106,9 +113,10 @@ class UserLogin extends Component {
                 Sign out
               </a>
               {this.takeToRegister()}
-              <a href="/" onClick={this.setRedirect}>
-                Register
-              </a>
+              <button onClick={this.setRedirect}>Register</button>
+              
+                
+              
     
               {/* <p>Log in</p> */}
               {/*
