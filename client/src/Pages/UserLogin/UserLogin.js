@@ -24,7 +24,9 @@ class UserLogin extends Component {
   };
 
   renderRedirect = () => {
-    if (this.state.redirect) {
+    if (this.state.redirect && this.state.userEmail) {
+      return <Redirect to="/dashboard" />;
+    } else  {
       return <Redirect to="/register" />;
     }
   };
