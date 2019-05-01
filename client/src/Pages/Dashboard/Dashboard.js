@@ -74,8 +74,32 @@ class Dashboard extends Component {
           </Tabs>
         </div>
       </div>
+  
+
     );
   }
 }
 
 export default Dashboard;
+
+    {/* <div>
+        <Navbar />
+        <div>
+         
+            
+            <Vehicles
+              vehicles={[{
+                registration: '10',
+                license: '11',
+                inspection: '12'
+              },
+              {
+                registration: '15',
+                license: '4',
+                inspection: '5'
+              },]}
+            />
+
+            
+        </div>
+      </div> */}
