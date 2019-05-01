@@ -19,7 +19,7 @@ export default {
 	},
 	// Updates an existing user to the database
 	updateUser: function(id, userData) {
-		return axios.put('/api/users' + id, userData);
+		return axios.put('/api/users/' + id, userData);
 	},
 
 	// Gets all cars
@@ -36,7 +36,7 @@ export default {
 	},
 	// Updates an existing car to the database
 	updateCar: function(id, carData, userId) {
-		return axios.put('/api/cars' + id, carData, userId);
+		return axios.put('/api/cars/' + id, carData, userId);
 	},
 
 	// Gets all documents
@@ -49,10 +49,10 @@ export default {
 	},
 	// Saves a new document to the database
 	saveDocument: function(carId, documentData) {
-		return axios.post('/api/documents/carId'+carId, documentData);
+		return axios.post('/api/documents/carId/'+carId, documentData);
 	},
 	// Updates an existing document to the database
 	updateDocument: function(id, documentData) {
-		return axios.put('/api/documents' + id, documentData);
+		return axios.put('/api/documents/' + id, documentData);
 	},
 };
