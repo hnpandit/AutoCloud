@@ -1,15 +1,35 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 import './UserLogin.css';
 
 /* global gapi */
 
 class UserLogin extends Component {
-	/*
+	
   state = {
-    username: "",
-    password: ""
+    userEmail: sessionStorage.getItem("email"),
+    redirect: false
+  }
+
+  componentDidMount() {
+    if(this.state.userEmail){
+      this.setRedirect()
+    }
+  }
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    });
   };
 
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to="/register" />;
+    }
+  };
+
+  /*
   change = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -21,6 +41,7 @@ class UserLogin extends Component {
     console.log(this.state);
   };
   */
+  
 
   //Added to remove cookies from browser
  removeCookies = () => {
@@ -54,8 +75,8 @@ render() {
               id="google-btn"
               data-onsuccess="onSignIn"
             />
-            <p>Sign in wih Google</p>
-
+            {this.renderRedirect()}
+            <br/>
             {/*Added signout button for testing purposes*/}
             <a href="/" onClick={this.signOut}>
               Sign out
