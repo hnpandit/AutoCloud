@@ -27,7 +27,7 @@ class UserLogin extends Component {
     if (this.state.userEmail) {
       return <Redirect to="/dashboard" />;
     } else {
-      return <Redirect to="/register" />;
+      return <Redirect to="/" />;
     }
   };
 
