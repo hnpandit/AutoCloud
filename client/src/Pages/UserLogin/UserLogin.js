@@ -70,6 +70,7 @@ class UserLogin extends Component {
   };
 
   takeToRegister = () => {
+    if (this.state.redirect)
     return <Redirect to="/register" />;
   }
 
@@ -93,7 +94,7 @@ class UserLogin extends Component {
               <h3>Welcome to </h3>
               <h1>Auto Cloud</h1>
               <div
-                onClick={this.setRedirect}
+                //onClick={this.setRedirect}
                 className="g-signin2"
                 id="google-btn"
                 data-onsuccess="onSignIn"
@@ -104,7 +105,8 @@ class UserLogin extends Component {
               <a href="/" onClick={this.signOut}>
                 Sign out
               </a>
-              <a href="/register" onClick={this.takeToRegister}>
+              {this.takeToRegister()}
+              <a href="/" onClick={this.setRedirect}>
                 Register
               </a>
     
