@@ -52,6 +52,8 @@ class UserLogin extends Component {
       userEmail: sessionStorage.getItem("email"),
       redirect: true
     });
+    document.location.reload()
+    //window.location.reload()
     if (this.state.userEmail) {
       return <Redirect to="/dashboard" />;
     } 
