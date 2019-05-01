@@ -48,7 +48,11 @@ class UserLogin extends Component {
     console.log("Image URL: " + profile.getImageUrl());
     console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
     sessionStorage.setItem("email", profile.getEmail());
-    this.setRedirect();
+    this.setState({
+      userEmail: sessionStorage.getItem("email"),
+      redirect: true
+    });
+    //this.setRedirect();
   };
 
   //Added to remove cookies from browser
