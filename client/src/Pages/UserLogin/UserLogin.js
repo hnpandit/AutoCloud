@@ -26,9 +26,7 @@ class UserLogin extends Component {
     console.log("logging this.state.userEmail: ", this.state.userEmail);
     if (this.state.userEmail) {
       return <Redirect to="/dashboard" />;
-    } else {
-      return <Redirect to="/" />;
-    }
+    } 
   };
 
   /*
