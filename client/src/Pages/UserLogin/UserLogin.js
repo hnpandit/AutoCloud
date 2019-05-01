@@ -70,7 +70,8 @@ render() {
           <div className="col-lg-12">
             <h3>Welcome to </h3>
             <h1>Auto Cloud</h1>
-            <div
+            <div 
+              onClick={this.setRedirect}
               className="g-signin2"
               id="google-btn"
               data-onsuccess="onSignIn"
