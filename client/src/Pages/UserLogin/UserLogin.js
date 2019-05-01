@@ -52,6 +52,7 @@ class UserLogin extends Component {
       userEmail: sessionStorage.getItem("email"),
       redirect: true
     });
+    location.reload();
     //this.setRedirect();
   };
 
