@@ -2,9 +2,10 @@ import React, { Component } from "react";
 // import "../../App.css";
 import "./Dashboard.css";
 import API from "../../util/api";
+import Vehicles from "../../Components/Vehicle/Vehicle"
 
-import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
+//import Tab from "react-bootstrap/Tab";
+//import Tabs from "react-bootstrap/Tabs";
 import Navbar from "../../Components/Navbar/Navbar";
 // import Footer from "../../Components/Footer/Footer";
 // import Col from 'react-bootstrap/Col'
@@ -38,68 +39,24 @@ class Dashboard extends Component {
       <div>
         <Navbar />
         <div>
-          <Tabs defaultActiveKey="" id="dashboard-tabs">
-            <Tab eventKey="home" title="Vehicle 1">
-              <div>
-                <Tab.Pane eventKey="first">
-                  <h1>Vehicle #1</h1>
-                  <div className="card">
-                    <p>Registration Expiration</p>
-                  </div>
-                  <div className="card">
-                    <p>License Expiration</p>
-                  </div>
-                  <div className="card">
-                    <p>Inspection Expiration</p>
-                  </div>
-                </Tab.Pane>
-              </div>
-            </Tab>
-            <Tab eventKey="profile" title="Vehicle 2">
-              <div>
-                <Tab.Pane eventKey="second">
-                  <h1>Vehicle #2</h1>
-                  <div className="card">
-                    <p>Registration Expiration</p>
-                  </div>
-                  <div className="card">
-                    <p>License Expiration</p>
-                  </div>
-                  <div className="card">
-                    <p>Inspection Expiration</p>
-                  </div>
-                </Tab.Pane>
-              </div>
-            </Tab>
-          </Tabs>
+          <Vehicles
+            vehicles={[
+              {
+                registration: "11/22/2019",
+                license: "12/20/2022",
+                inspection: "12/21"
+              },
+              {
+                registration: "12/20/2020",
+                license: "1/13/2021",
+                inspection: "3/23"
+              }
+            ]}
+          />
         </div>
       </div>
-  
-
     );
   }
 }
 
 export default Dashboard;
-
-    {/* <div>
-        <Navbar />
-        <div>
-         
-            
-            <Vehicles
-              vehicles={[{
-                registration: '10',
-                license: '11',
-                inspection: '12'
-              },
-              {
-                registration: '15',
-                license: '4',
-                inspection: '5'
-              },]}
-            />
-
-            
-        </div>
-      </div> */}
