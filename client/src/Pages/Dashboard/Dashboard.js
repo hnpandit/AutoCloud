@@ -13,7 +13,7 @@ import Navbar from "../../Components/Navbar/Navbar";
 
 class Dashboard extends Component {
   state = {
-    userEmail: "jonp182015@gmail.com",
+    userEmail: sessionStorage.getItem("email"),
     user: []
   };
 
@@ -26,7 +26,6 @@ class Dashboard extends Component {
   loadItems = () => {
     API.getUserByEmail(this.state.userEmail)
       .then(res => {
-		console.log('logging res: ', res);
         this.setState({
           user: res.data
         });
