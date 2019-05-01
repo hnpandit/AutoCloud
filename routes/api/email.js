@@ -3,14 +3,14 @@ const emailRouter = require('express').Router();
 //const emailController = require("../../controllers/email");
 
 // User End-points
-emailRouter.get('/notify', (req, res, next) => {
+emailRouter.get('/notify/:email', (req, res, next) => {
 	const email = require('../../send-email');
 
 	var message =
 		'Congratulations. Welcome to AutoCloud. You have registered successfully.';
 
 	email.sendEmail(
-		'himanshu.pandit@outlook.com',
+		req.params.email,
 		'Welcome to RCB AutoCloud',
 		message,
 	);
