@@ -59,7 +59,7 @@ class CarProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h1>AutoCloud</h1>
+              <h1>Auto Cloud</h1>
               <p>Add a Car to your Profile</p>
               <form>
                 <div className="form-group">
