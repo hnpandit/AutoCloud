@@ -14,6 +14,7 @@ module.exports = {
 
   create: async (carId, body) => {
     try {
+      console.log('logging carId: ', carId);
       const document = await new db.Document(body);
       const dbDocument = await document
         .save()

@@ -52,8 +52,9 @@ class UserLogin extends Component {
       userEmail: sessionStorage.getItem("email"),
       redirect: true
     });
-    location.reload();
-    //this.setRedirect();
+    if (this.state.userEmail) {
+      return <Redirect to="/dashboard" />;
+    } 
   };
 
   //Added to remove cookies from browser
