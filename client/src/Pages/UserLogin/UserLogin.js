@@ -26,16 +26,19 @@ class UserLogin extends Component {
   takeToDashboard = () => {
     console.log("logging this.state.userEmail: ", this.state.userEmail);
     if (this.state.userEmail) {
-      API.getUsers({}).then(res => {
-        res.data.forEach(element => {
-          if (element.email === this.state.userEmail) {
-            console.log("email matched database: ", element.email);
-            return <Redirect to="/dashboard" />;
-          } else {
-            return <Redirect to="/register" />;
-          }
-        });
+      return <Redirect to="/dashboard" />;
+    /*
+    API.getUsers({}).then(res => {
+      res.data.forEach(element => {
+        if (element.email === this.state.userEmail) {
+          console.log("email matched database: ", element.email);
+          return <Redirect to="/dashboard" />;
+        } else {
+          return <Redirect to="/register" />;
+        }
       });
+    });
+    */
     }
   };
 
@@ -99,7 +102,7 @@ class UserLogin extends Component {
                 id="google-btn"
                 data-onsuccess="onSignIn"
               />
-              {this.takeToDashboard()}
+              {/*{this.takeToDashboard()}
 
               <br />
 
