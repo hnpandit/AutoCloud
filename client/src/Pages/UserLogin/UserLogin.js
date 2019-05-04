@@ -7,7 +7,7 @@ import "./UserLogin.css";
 
 class UserLogin extends Component {
   state = {
-    userEmail: "pepe@gmail.com", ////sessionStorage.getItem("email"),
+    userEmail: sessionStorage.getItem("email"),
     redirect: false
   };
 
