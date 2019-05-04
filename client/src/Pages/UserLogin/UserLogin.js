@@ -102,7 +102,7 @@ class UserLogin extends Component {
                 id="google-btn"
                 data-onsuccess="onSignIn"
               />
-              {/*{this.takeToDashboard()}
+              {this.takeToDashboard()}
 
               <br />
 
