@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+import API from "../../util/api";
 import "./UserLogin.css";
 
 /* global gapi */
 
 class UserLogin extends Component {
   state = {
-    userEmail: sessionStorage.getItem("email"),
+    userEmail: "pepe@gmail.com", ////sessionStorage.getItem("email"),
     redirect: false
   };
 
@@ -22,25 +23,26 @@ class UserLogin extends Component {
     });
   };
 
-  renderRedirect = () => {
+  takeToDashboard = () => {
     console.log("logging this.state.userEmail: ", this.state.userEmail);
     if (this.state.userEmail) {
-      return <Redirect to="/dashboard" />;
-    } 
+      API.getUsers({}).then(res => {
+        res.data.forEach(element => {
+          if (element.email === this.state.userEmail) {
+            console.log("email matched database: ", element.email);
+            return <Redirect to="/dashboard" />;
+          } else {
+            return <Redirect to="/register" />;
+          }
+        });
+      });
+    }
   };
 
-  /*
-  change = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+  takeToRegister = () => {
+    console.log("take to register hit");
+    if (this.state.redirect) return <Redirect to="/register" />;
   };
-  
-  onSubmit = e => {
-    e.preventDefault();
-    console.log(this.state);
-  };
-  */
 
   /*
   onSignIn = googleUser => {
@@ -62,7 +64,15 @@ class UserLogin extends Component {
   };
 
   */
-  
+
+  signOut = () => {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function() {
+      console.log("User signed out.");
+    });
+    this.removeCookies();
+    sessionStorage.removeItem("email");
+  };
 
   //Added to remove cookies from browser
   removeCookies = () => {
@@ -74,24 +84,6 @@ class UserLogin extends Component {
     }
   };
 
-  takeToRegister = () => {
-    console.log("take to register hit");
-    if (this.state.redirect)
-    return <Redirect to="/register" />;
-  }
-
-  
-
-  signOut = () => {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function() {
-      console.log("User signed out.");
-    });
-    this.removeCookies();
-    sessionStorage.removeItem("email");
-  };
-  
-
   render() {
     return (
       <div id="registrationPage">
@@ -100,62 +92,25 @@ class UserLogin extends Component {
             <div className="col-lg-12">
               <h3>Welcome to </h3>
               <h1>Auto Cloud</h1>
+
+              {/*This button sings user with google*/}
               <div
-                //onClick={this.setRedirect}
                 className="g-signin2"
                 id="google-btn"
                 data-onsuccess="onSignIn"
               />
-              {this.renderRedirect()}
+              {this.takeToDashboard()}
+
               <br />
+
               {/*Added signout button for testing purposes*/}
               <a href="/" onClick={this.signOut}>
                 Sign out
               </a>
+
+              {/*This button takes user to registration page*/}
               {this.takeToRegister()}
               <button onClick={this.setRedirect}>Register</button>
-              
-                
-              
-    
-              {/* <p>Log in</p> */}
-              {/*
-              <form>
-                <div className="form-group">
-                  <input
-                    name="username"
-                    value={this.state.username}
-                    onChange={e => this.change(e)}
-                    type="email"
-                    className="form-control"
-                    placeholder="Username"
-                    id="username"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <input
-                    name="password"
-                    value={this.state.password}
-                    onChange={e => this.change(e)}
-                    type="password"
-                    className="form-control"
-                    placeholder="Password"
-                    id="password"
-                  />
-                </div>
-
-                <button
-                  onClick={e => this.onSubmit(e)}
-                  type="submit"
-                  className="btn"
-                >
-                  Log In
-                </button>
-                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-              </form>
-              <a href="/register">Register</a>
-              */}
             </div>
           </div>
         </div>
