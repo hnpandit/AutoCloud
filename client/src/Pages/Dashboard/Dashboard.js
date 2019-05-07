@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "./Dashboard.css";
 import API from "../../util/api";
-import Vehicles from "../../Components/Vehicle/Vehicle";
+import Vehicles from "../../Components/Vehicle/Vehicle"
+
+//import Tab from "react-bootstrap/Tab";
+//import Tabs from "react-bootstrap/Tabs";
 import Navbar from "../../Components/Navbar/Navbar";
 
 class Dashboard extends Component {
@@ -43,10 +46,25 @@ class Dashboard extends Component {
         </div>
       </div> 
 
+          <Vehicles
+            vehicles={[
+              {
+                registration: "11/22/2019",
+                license: "12/20/2022",
+                inspection: "12/21"
+              },
+              {
+                registration: "12/20/2020",
+                license: "1/13/2021",
+                inspection: "3/23"
+              }
+            ]}
+          />
+        </div>
+      </div>
     );
   }
 }
 
 export default Dashboard;
-
 
