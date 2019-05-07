@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const db = require('../models');
 
 mongoose.connect(
-	//process.env.MONGODB_URI || 'mongodb://localhost:27017/autoCloud',
-	process.env.MONGODB_URI ||'mongodb://heroku_8dt35cjz:bj4mlr99sdsadu140kikke4396@ds159204.mlab.com:59204/heroku_8dt35cjz',
+	process.env.MONGODB_URI || 'mongodb://localhost:27017/autoCloud',
+	// process.env.MONGODB_URI ||'mongodb://heroku_8dt35cjz:bj4mlr99sdsadu140kikke4396@ds159204.mlab.com:59204/heroku_8dt35cjz',
 	{ useNewUrlParser: true },
 );
 
