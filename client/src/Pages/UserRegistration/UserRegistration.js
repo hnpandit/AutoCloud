@@ -146,6 +146,8 @@ class UserRegistration extends Component {
                     value={this.state.phoneNumber}
                     onChange={e => this.change(e)}
                     type="tel"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    required
                     className="form-control"
                     placeholder="Phone number (required)"
                     id="phone-number"
