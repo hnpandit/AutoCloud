@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import "./UserRegistration.css";
 import API from "../../util/api";
 
-/* global gapi */
+//* global gapi */
 
 class UserRegistration extends Component {
   state = {
@@ -12,6 +12,7 @@ class UserRegistration extends Component {
     lastName: "",
     email: "",
     phoneNumber: "",
+
     proceed: false,
     cancel: false
   };
@@ -42,12 +43,15 @@ class UserRegistration extends Component {
   };
   
   signOut = () => {
+    /*
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function() {
       console.log("User signed out.");
     });
+    */
     this.removeCookies();
     sessionStorage.removeItem("email");
+    sessionStorage.removeItem("userId");
   };
 
   //Added to remove cookies from browser
@@ -82,15 +86,12 @@ class UserRegistration extends Component {
             firstName: "",
             lastName: "",
             email: "",
-            phoneNumber: "",
-            //redirect: false
-            
+            phoneNumber: "" 
           })
           sessionStorage.setItem("userId", res.data._id);
           this.setProceed();
           console.log("Logging created user: ", res);
         }
-        //console.log('logging this.state.userId', this.state.userId);
       })
       .catch(err => console.log("logging error: ", err));
   };
