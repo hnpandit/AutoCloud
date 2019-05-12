@@ -5,23 +5,37 @@ import API from "../../util/api";
 
 class DocumentProfile extends Component {
   state = {
-    carId: "",
+    carId: sessionStorage.getItem("carId"),
+    userEmail: sessionStorage.getItem("email"),
 
     type: "",
     docId: "",
     expirationDate: "",
     notificationDay: "",
-    redirect: false
+    proceed: false,
+    skip: false
   };
 
-  setRedirect = () => {
+  setProceed = () => {
     this.setState({
-      redirect: true
+      proceed: true
     });
   };
 
-  renderRedirect = () => {
-    if (this.state.redirect) {
+  setSkip = () => {
+    this.setState({
+      skip: true
+    });
+  };
+
+  renderProceed = () => {
+    if (this.state.proceed) {
+      return <Redirect to="/dashboard" />;
+    }
+  };
+
+  renderSkip = () => {
+    if (this.state.skip && this.state.carId) {
       return <Redirect to="/dashboard" />;
     }
   };
@@ -29,7 +43,6 @@ class DocumentProfile extends Component {
   change = event => {
     this.setState({
       [event.target.name]: event.target.value,
-      carId: sessionStorage.getItem("carId")
     });
   };
 
@@ -43,9 +56,8 @@ class DocumentProfile extends Component {
     })
       .then(res => {
         if (res.data._id) {
-          this.setRedirect();
+          this.setProceed();
           console.log("Logging added vehicle: ", res);
-          //console.log('logging this.state.userId:', this.state.carId);
         }
       })
       .catch(err => console.log("logging error: ", err));
@@ -103,13 +115,22 @@ class DocumentProfile extends Component {
                   />
                 </div>
 
-                {this.renderRedirect()}
+                {this.renderProceed()}
                 <button
                   onClick={e => this.submitDocumentProfile(e)}
                   type="submit"
                   className="btn"
                 >
-                  Add Document
+                  Add
+                </button>
+
+                {this.renderSkip()}
+                <button
+                  onClick={this.setSkip}
+                  type="submit"
+                  className="btn"
+                >
+                  Skip
                 </button>
               </form>
             </div>
