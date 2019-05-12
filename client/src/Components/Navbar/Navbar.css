@@ -7,20 +7,22 @@
     text-shadow: 0 3px 6px #999, 0 3px 6px #999;
 }
 
-a {
+a, #logOut {
     padding: 5px 10px;
     background-color: #333;
     margin-right: 5px;
     margin-top: 5px;
     border-radius: 5px;
-    color: #fff !important;
+    color: #fff ;
     font-size: 20px;
     text-align: center;
 }
 
-a:hover { 
-	background-color: red; /*had to add "!importan" to overide the others*/
-    transition: background .5s;
+
+
+#logOut:hover { 
+	background-color: red; /*had to add "!important" to overide the others*/
+    /*transition: background .5s;*/
 }
  
 

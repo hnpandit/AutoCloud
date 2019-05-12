@@ -6,32 +6,46 @@ import API from "../../util/api";
 class CarProfile extends Component {
   state = {
     userId: "",
-    
+    userEmail: sessionStorage.getItem("email"),
     model: "",
     make: "",
     year: "",
     regExp: "",
     licExp: "",
     inspExp: "",
-    redirect: false
+    proceed: false,
+    skip: false
   };
 
-  setRedirect = () => {
+  setProceed = () => {
     this.setState({
-      redirect: true
+      proceed: true
     });
   };
 
-  renderRedirect = () => {
-    if (this.state.redirect) {
+  setSkip = () => {
+    this.setState({
+      skip: true
+    });
+  };
+
+  renderProceed = () => {
+    if (this.state.proceed) {
       return <Redirect to="/documentProfile" />;
+    }
+  };
+
+  renderSkip = () => {
+    if (this.state.skip && this.state.userEmail) {
+      return <Redirect to="/dashboard" />;
     }
   };
 
   change = event => {
     this.setState({
       [event.target.name]: event.target.value,
-      userId: sessionStorage.getItem("userId")
+      userId: sessionStorage.getItem("userId"),
+      userEmail: sessionStorage.getItem("userId")
     });
   };
 
@@ -45,7 +59,7 @@ class CarProfile extends Component {
       .then(res => {
         if (res.data._id) {
           sessionStorage.setItem("carId", res.data.cars[0]._id);
-          this.setRedirect();
+          this.setProceed();
           console.log("Logging added vehicle: ", res);
           //console.log('logging this.state.userId:', this.state.userId);
         }
@@ -94,13 +108,21 @@ class CarProfile extends Component {
                 </div>
                 
 
-                {this.renderRedirect()}
+                {this.renderProceed()}
                 <button
                   onClick={e => this.submitCarProfile(e)}
                   type="submit"
                   className="btn"
                 >
                   Add Vehicle
+                </button>
+                {this.renderSkip()}
+                <button
+                  onClick={this.setSkip}
+                  type="submit"
+                  className="btn"
+                >
+                  Skip
                 </button>
               </form>
             </div>

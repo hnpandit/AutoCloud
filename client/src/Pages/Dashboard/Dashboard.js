@@ -2,7 +2,10 @@ import React, { Component } from "react";
 // import "../../App.css";
 import "./Dashboard.css";
 import API from "../../util/api";
-import Vehicles from "../../Components/Vehicle/Vehicle"
+import Vehicles from "../../Components/Vehicle/Vehicle";
+import { Redirect } from "react-router-dom";
+
+/* global gapi */
 
 //import Tab from "react-bootstrap/Tab";
 //import Tabs from "react-bootstrap/Tabs";
@@ -15,8 +18,20 @@ import Navbar from "../../Components/Navbar/Navbar";
 class Dashboard extends Component {
   state = {
     userEmail: sessionStorage.getItem("email"),
-    user: []
+    user: [],
+    signOut: false
   };
+
+
+  setSignOut = () => {
+    this.setState({
+      signOut: true
+    })
+  }
+
+  renderSignOut =  () => {
+      if (this.state.signOut) return <Redirect to="/" />; 
+  }
 
   componentDidMount() {
     if (this.state.userEmail) {
@@ -34,10 +49,37 @@ class Dashboard extends Component {
       .catch(err => console.log(err));
     console.log("logging this.state: ", this.state);
   };
+
+  handleClick = () => {
+    console.log("the button was clicked!");
+  }
+
+  signOut = () => {
+    
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function() {
+      console.log("User signed out.");
+    });
+    this.removeCookies();
+    sessionStorage.removeItem("email");
+    this.setSignOut();
+    console.log("btn was clicked!")
+  };
+
+  //Added to remove cookies from browser
+  removeCookies = () => {
+    var res = document.cookie;
+    var multiple = res.split(";");
+    for (var i = 0; i < multiple.length; i++) {
+      var key = multiple[i].split("=");
+      document.cookie = key[0] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
+    }
+  };
   render() {
     return (
       <div>
-        <Navbar />
+        {this.renderSignOut()}
+        <Navbar signOut={this.signOut}/>
         <div>
           <Vehicles
             vehicles={[
