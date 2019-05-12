@@ -68,9 +68,25 @@ class Dashboard extends Component {
   // };
   render() {
     return (
-      <a href="/" onClick={this.signOut}>
-      Sign out
-    </a>
+       <div>
+          {this.renderSignOut()}
+          <Navbar signOut={this.signOut}/>
+
+          <Vehicles
+            vehicles={[
+              {
+                registration: "11/22/2019",
+                license: "12/20/2022",
+                inspection: "12/21"
+              },
+              {
+                registration: "12/20/2020",
+                license: "1/13/2021",
+                inspection: "3/23"
+              }
+            ]}
+          />
+        </div>
       
     );
   }
