@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import "./UserRegistration.css";
 import API from "../../util/api";
 
-//* global gapi */
+/* global gapi */
 
 class UserRegistration extends Component {
   state = {
@@ -38,21 +38,19 @@ class UserRegistration extends Component {
 
   renderCancel = () => {
     if (this.state.cancel) {
-      this.signOut()
       return <Redirect to="/" />;
     }
   };
   
   signOut = () => {
-    /*
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function() {
       console.log("User signed out.");
     });
-    */
     this.removeCookies();
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("userId");
+    this.setCancel();
   };
 
   //Added to remove cookies from browser
@@ -165,7 +163,7 @@ class UserRegistration extends Component {
                 
                 {this.renderCancel()}
                 <button
-                  onClick={this.setCancel}
+                  onClick={this.signOut}
                   type="submit"
                   className="btn"
                 >
