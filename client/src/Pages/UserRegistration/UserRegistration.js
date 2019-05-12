@@ -7,6 +7,7 @@ import API from "../../util/api";
 
 class UserRegistration extends Component {
   state = {
+    userEmail: sessionStorage.getItem("email"),
     userId: "",
     firstName: "",
     lastName: "",
