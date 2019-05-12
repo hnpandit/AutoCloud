@@ -3,19 +3,13 @@ import { Redirect } from "react-router-dom";
 //import API from "../../util/api";
 import "./UserLogin.css";
 
-/* global gapi */
+//* global gapi */
 
 class UserLogin extends Component {
   state = {
     userEmail: sessionStorage.getItem("email"),
     redirect: false
   };
-
-  componentDidMount() {
-    if (this.state.userEmail) {
-      //this.setRedirect()
-    }
-  }
 
   setRedirect = () => {
     this.setState({
@@ -46,7 +40,7 @@ class UserLogin extends Component {
     if (this.state.redirect) return <Redirect to="/register" />;
   };
   
-  
+  /*
   signOut = () => {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function() {
@@ -65,6 +59,7 @@ class UserLogin extends Component {
       document.cookie = key[0] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
     }
   };
+  */
 
   
 
@@ -88,10 +83,11 @@ class UserLogin extends Component {
               <br />
 
               {/*Added signout button for testing purposes*/}
-              
+              {/*
               <a href="/" onClick={this.signOut}>
                 Sign out
               </a>
+              */}
               
 
               {/*This button takes user to registration page*/}
