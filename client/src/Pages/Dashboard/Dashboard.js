@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import "../../App.css";
 import "./Dashboard.css";
 import API from "../../util/api";
 import Vehicles from "../../Components/Vehicle/Vehicle";
@@ -10,12 +9,9 @@ import { Redirect } from "react-router-dom";
 //import Tab from "react-bootstrap/Tab";
 //import Tabs from "react-bootstrap/Tabs";
 import Navbar from "../../Components/Navbar/Navbar";
-// import Footer from "../../Components/Footer/Footer";
-// import Col from 'react-bootstrap/Col'
-// import Nav from 'react-bootstrap/Nav'
-// import Row from 'react-bootstrap/Row'
 
 class Dashboard extends Component {
+  
   state = {
     userEmail: sessionStorage.getItem("email"),
     user: [],
@@ -34,28 +30,13 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    if (this.state.userEmail) {
-      this.loadItems();
-    }
-  }
-
-  loadItems = () => {
-    API.getUserByEmail(this.state.userEmail)
-      .then(res => {
-        this.setState({
-          user: res.data
-        });
-      })
+    API.getUsers()
+      .then(res => this.setState({user: res.data}))
       .catch(err => console.log(err));
-    console.log("logging this.state: ", this.state);
+
   };
 
-  handleClick = () => {
-    console.log("the button was clicked!");
-  }
-
   signOut = () => {
-    
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function() {
       console.log("User signed out.");
@@ -63,7 +44,6 @@ class Dashboard extends Component {
     this.removeCookies();
     sessionStorage.removeItem("email");
     this.setSignOut();
-    console.log("btn was clicked!")
   };
 
   //Added to remove cookies from browser
@@ -75,12 +55,28 @@ class Dashboard extends Component {
       document.cookie = key[0] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
     }
   };
+  
+  // loadItems = () => {
+  //   API.getUserByEmail(this.state.userEmail)
+  //     .then(res => {
+  //       this.setState({
+  //         user: res.data
+  //       });
+  //     })
+  //     .catch(err => console.log(err));
+  //   console.log("logging this.state: ", this.state);
+  // };
   render() {
     return (
-      <div>
-        {this.renderSignOut()}
-        <Navbar signOut={this.signOut}/>
-        <div>
+       <div>
+          {this.renderSignOut()}
+          <Navbar signOut={this.signOut}/>
+          <div>
+            <Vehicles
+              vehicles={this.state.user}
+            />    
+          </div> 
+
           <Vehicles
             vehicles={[
               {
@@ -102,3 +98,4 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
+
