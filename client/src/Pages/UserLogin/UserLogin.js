@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 //import API from "../../util/api";
 import "./UserLogin.css";
 
-/* global gapi */
+///* global gapi */
 
 class UserLogin extends Component {
   state = {
@@ -47,7 +47,7 @@ class UserLogin extends Component {
     if (this.state.redirect) return <Redirect to="/register" />;
   };
 
-  /*
+  
   onSignIn = googleUser => {
     var profile = googleUser.getBasicProfile();
     console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -55,19 +55,10 @@ class UserLogin extends Component {
     console.log("Image URL: " + profile.getImageUrl());
     console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
     sessionStorage.setItem("email", profile.getEmail());
-    this.setState({
-      userEmail: sessionStorage.getItem("email"),
-      redirect: true
-    });
-    document.location.reload()
-    //window.location.reload()
-    if (this.state.userEmail) {
-      return <Redirect to="/dashboard" />;
-    } 
   };
 
 
-
+  /*
   signOut = () => {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function() {

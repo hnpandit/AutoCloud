@@ -4,11 +4,11 @@ import API from "../../util/api";
 import Vehicles from "../../Components/Vehicle/Vehicle";
 import { Redirect } from "react-router-dom";
 
-/* global gapi */
-
 //import Tab from "react-bootstrap/Tab";
 //import Tabs from "react-bootstrap/Tabs";
 import Navbar from "../../Components/Navbar/Navbar";
+
+/* global gapi */
 
 class Dashboard extends Component {
   
@@ -37,12 +37,12 @@ class Dashboard extends Component {
   };
 
   signOut = () => {
-    /*
+    
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function() {
       console.log("User signed out.");
     });
-    */
+    
     this.removeCookies();
     sessionStorage.removeItem("email");
     this.setSignOut();
