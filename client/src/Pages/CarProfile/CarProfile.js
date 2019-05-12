@@ -5,7 +5,7 @@ import API from "../../util/api";
 
 class CarProfile extends Component {
   state = {
-    userId: "",
+    userId: sessionStorage.getItem("userId"),
     userEmail: sessionStorage.getItem("email"),
     model: "",
     make: "",
@@ -44,8 +44,6 @@ class CarProfile extends Component {
   change = event => {
     this.setState({
       [event.target.name]: event.target.value,
-      userId: sessionStorage.getItem("userId"),
-      userEmail: sessionStorage.getItem("userId")
     });
   };
 
@@ -114,7 +112,7 @@ class CarProfile extends Component {
                   type="submit"
                   className="btn"
                 >
-                  Add Vehicle
+                  Add 
                 </button>
                 {this.renderSkip()}
                 <button
