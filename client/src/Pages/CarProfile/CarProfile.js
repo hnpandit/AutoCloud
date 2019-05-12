@@ -114,6 +114,7 @@ class CarProfile extends Component {
                 >
                   Add 
                 </button>
+                
                 {this.renderSkip()}
                 <button
                   onClick={this.setSkip}
