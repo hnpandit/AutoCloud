@@ -73,11 +73,13 @@ class UserLogin extends Component {
               <h1>Auto Cloud</h1>
 
               {/*This button sings user with google*/}
+              {/*
               <div
                 className="g-signin2"
                 id="google-btn"
                 data-onsuccess="onSignIn"
               />
+              */}
               {this.takeToDashboard()}
 
               <br />
