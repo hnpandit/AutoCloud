@@ -3,6 +3,8 @@ import { Redirect } from "react-router-dom";
 import "./UserRegistration.css";
 import API from "../../util/api";
 
+/* global gapi */
+
 class UserRegistration extends Component {
   state = {
     userId: "",
@@ -10,44 +12,53 @@ class UserRegistration extends Component {
     lastName: "",
     email: "",
     phoneNumber: "",
-    redirect: false
+    proceed: false,
+    cancel: false
   };
-  /*
-  componentDidMount() {
-    this.loadItems();
-  }
-
-  loadItems = () => {
-    API.getItems()
-      .then(res =>
-        this.setState({
-          items: res.data,
-          note: "",
-          author: ""
-        })
-      )
-      .catch(err => console.log(err));
-  };
-  */
-
-
-  setRedirect = () => {
+  
+  setProceed = () => {
     this.setState({
-      redirect: true
+      proceed: true
     });
   };
 
-  renderRedirect = () => {
-    if (this.state.redirect) {
+  renderProceed = () => {
+    if (this.state.proceed) {
       return <Redirect to="/carProfile" />;
     }
   };
-  /*
-  onSubmit = e => {
-    e.preventDefault();
-    console.log(this.state);
+
+  setCancel = () => {
+    this.setState({
+      cancel: true
+    })
+  }
+
+  renderCancel = () => {
+    if (this.state.cancel) {
+      this.signOut()
+      return <Redirect to="/" />;
+    }
   };
-  */
+  
+  signOut = () => {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function() {
+      console.log("User signed out.");
+    });
+    this.removeCookies();
+    sessionStorage.removeItem("email");
+  };
+
+  //Added to remove cookies from browser
+  removeCookies = () => {
+    var res = document.cookie;
+    var multiple = res.split(";");
+    for (var i = 0; i < multiple.length; i++) {
+      var key = multiple[i].split("=");
+      document.cookie = key[0] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
+    }
+  };
 
   change = event => {
     this.setState({
@@ -76,7 +87,7 @@ class UserRegistration extends Component {
             
           })
           sessionStorage.setItem("userId", res.data._id);
-          this.setRedirect();
+          this.setProceed();
           console.log("Logging created user: ", res);
         }
         //console.log('logging this.state.userId', this.state.userId);
@@ -141,13 +152,22 @@ class UserRegistration extends Component {
                   />
                 </div>
 
-                {this.renderRedirect()}
+                {this.renderProceed()}
                 <button
                   onClick={this.handleFormSubmit}
                   type="submit"
                   className="btn"
                 >
                   Create Account
+                </button>
+                
+                {this.renderCancel()}
+                <button
+                  onClick={this.setCancel}
+                  type="submit"
+                  className="btn"
+                >
+                  Cancel
                 </button>
               </form>
             </div>

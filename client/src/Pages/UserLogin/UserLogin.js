@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import API from "../../util/api";
+//import API from "../../util/api";
 import "./UserLogin.css";
 
 /* global gapi */
@@ -66,7 +66,7 @@ class UserLogin extends Component {
     } 
   };
 
-  */
+
 
   signOut = () => {
     var auth2 = gapi.auth2.getAuthInstance();
@@ -86,6 +86,8 @@ class UserLogin extends Component {
       document.cookie = key[0] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
     }
   };
+
+  */
 
   render() {
     return (
@@ -107,9 +109,11 @@ class UserLogin extends Component {
               <br />
 
               {/*Added signout button for testing purposes*/}
+              {/*}
               <a href="/" onClick={this.signOut}>
                 Sign out
               </a>
+              */}
 
               {/*This button takes user to registration page*/}
               {this.takeToRegister()}

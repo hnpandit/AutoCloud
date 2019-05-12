@@ -22,6 +22,7 @@ function Navbar(props) {
 				</button>
 				<div className="collapse navbar-collapse" id="navbarText">
 					<ul className="navbar-nav mr-auto">
+						{/*
 						<li className="nav-item active">
 							<a className="nav-link" href="/profile">
 								Profile <span className="sr-only">(current)</span>
@@ -37,11 +38,15 @@ function Navbar(props) {
 								Documents
 							</a>
 						</li>
+						*/}
 					</ul>
 					<span className="navbar-text">
+						<div id="logOut" onClick={props.signOut}>Log Out</div>
+						{/*
 						<a className="nav-link" id="logOut" href="/logOut">
 							Log out
 						</a>
+						*/}
 					</span>
 				</div>
 			</nav>

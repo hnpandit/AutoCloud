@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "./Dashboard.css";
 import API from "../../util/api";
-import Vehicles from "../../Components/Vehicle/Vehicle"
+import Vehicles from "../../Components/Vehicle/Vehicle";
+import { Redirect } from "react-router-dom";
+
+/* global gapi */
 
 //import Tab from "react-bootstrap/Tab";
 //import Tabs from "react-bootstrap/Tabs";
@@ -10,8 +13,21 @@ import Navbar from "../../Components/Navbar/Navbar";
 class Dashboard extends Component {
   
   state = {
-    user: []
+    userEmail: sessionStorage.getItem("email"),
+    user: [],
+    signOut: false
   };
+
+
+  setSignOut = () => {
+    this.setState({
+      signOut: true
+    })
+  }
+
+  renderSignOut =  () => {
+      if (this.state.signOut) return <Redirect to="/" />; 
+  }
 
   componentDidMount() {
     API.getUsers()
@@ -20,6 +36,26 @@ class Dashboard extends Component {
 
   };
 
+  signOut = () => {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function() {
+      console.log("User signed out.");
+    });
+    this.removeCookies();
+    sessionStorage.removeItem("email");
+    this.setSignOut();
+  };
+
+  //Added to remove cookies from browser
+  removeCookies = () => {
+    var res = document.cookie;
+    var multiple = res.split(";");
+    for (var i = 0; i < multiple.length; i++) {
+      var key = multiple[i].split("=");
+      document.cookie = key[0] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
+    }
+  };
+  
   // loadItems = () => {
   //   API.getUserByEmail(this.state.userEmail)
   //     .then(res => {
@@ -32,19 +68,14 @@ class Dashboard extends Component {
   // };
   render() {
     return (
-     
        <div>
-        <Navbar />
-        <div>
-         
-            
+          {this.renderSignOut()}
+          <Navbar signOut={this.signOut}/>
+          <div>
             <Vehicles
               vehicles={this.state.user}
-            />
-
-            
-        </div>
-      </div> 
+            />    
+          </div> 
 
           <Vehicles
             vehicles={[
