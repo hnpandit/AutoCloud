@@ -110,6 +110,7 @@ class UserRegistration extends Component {
                     value={this.state.firstName}
                     onChange={e => this.change(e)}
                     type="text"
+                    required
                     className="form-control"
                     id="first"
                     placeholder="First Name (required)"
@@ -122,6 +123,7 @@ class UserRegistration extends Component {
                     value={this.state.lastName}
                     onChange={e => this.change(e)}
                     type="text"
+                    required
                     className="form-control"
                     placeholder="Last Name (required)"
                     id="last"
@@ -134,6 +136,7 @@ class UserRegistration extends Component {
                     value={this.state.email}
                     onChange={e => this.change(e)}
                     type="email"
+                    required
                     className="form-control"
                     placeholder="E-Mail (required)"
                     id="email"
@@ -146,7 +149,8 @@ class UserRegistration extends Component {
                     value={this.state.phoneNumber}
                     onChange={e => this.change(e)}
                     type="tel"
-                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    //pattern="[0-9]{3} [0-9]{3} [0-9]{4}" 
+                    maxLength="10"
                     required
                     className="form-control"
                     placeholder="Phone number (required)"
