@@ -43,6 +43,7 @@ class Dashboard extends Component {
     });
     this.removeCookies();
     sessionStorage.removeItem("email");
+    sessionStorage.removeItem("userId");
     this.setSignOut();
   };
 
