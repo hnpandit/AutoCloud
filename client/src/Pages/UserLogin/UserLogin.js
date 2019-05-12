@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 //import API from "../../util/api";
 import "./UserLogin.css";
 
-///* global gapi */
+/* global gapi */
 
 class UserLogin extends Component {
   state = {
