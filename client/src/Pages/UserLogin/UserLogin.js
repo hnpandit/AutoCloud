@@ -43,11 +43,10 @@ class UserLogin extends Component {
   };
 
   takeToRegister = () => {
-    console.log("take to register hit");
     if (this.state.redirect) return <Redirect to="/register" />;
   };
   
-  /*
+  
   signOut = () => {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function() {
@@ -67,7 +66,7 @@ class UserLogin extends Component {
     }
   };
 
-  */
+  
 
   render() {
     return (
@@ -89,11 +88,11 @@ class UserLogin extends Component {
               <br />
 
               {/*Added signout button for testing purposes*/}
-              {/*}
+              
               <a href="/" onClick={this.signOut}>
                 Sign out
               </a>
-              */}
+              
 
               {/*This button takes user to registration page*/}
               {this.takeToRegister()}
