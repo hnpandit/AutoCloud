@@ -59,11 +59,11 @@ export default {
 //Authorized User Addition
 
 	signUpUser: function(userEmailPwd){
-		return axios.post('/api/userAuths/signup', userEmailPwd);
+		return axios.post('/api/AuthUser/signup', userEmailPwd);
 	},
 
 	loginUser: function(userEmailPwd){
-		return axios.post('/api/userAuths/login', userEmailPwd);
+		return axios.post('/api/AuthUser/login', userEmailPwd);
 	}
 
 };
