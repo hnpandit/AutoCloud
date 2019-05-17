@@ -10,12 +10,19 @@ class UserLogin extends Component {
     //userEmail: sessionStorage.getItem("email"),
     email: "",
     password: "",
-    proceed: false,
+    toDashboard: false,
+    toSignup: false
   };
 
-  setProceed = () => {
+  setToDashboard = () => {
     this.setState({
-      proceed: true
+      toDashboard: true
+    });
+  };
+
+  setToSignup = () => {
+    this.setState({
+      toSignup: true
     });
   };
 
@@ -38,7 +45,7 @@ class UserLogin extends Component {
             token: res.data.token
           })
           sessionStorage.setItem("userToken", res.data.token);
-          this.setProceed();
+          this.setToDashboard();
         } 
       })
       .catch(err => console.log("logging error: ", err));
@@ -50,8 +57,8 @@ class UserLogin extends Component {
     }
   };
 
-  takeToRegister = () => {
-    if (this.state.redirect) return <Redirect to="/register" />;
+  takeToSignup = () => {
+    if (this.state.toSignup) return alert("button to signup works! Signup page is under construction");//return <Redirect to="/signup" />;
   };
 
   render() {
@@ -98,10 +105,10 @@ class UserLogin extends Component {
               */}
 
               {this.takeToDashboard()}
-              <button onClick={this.handleFormSubmit} type="submit" className="btn">Submit</button>
+              <button onClick={this.handleFormSubmit} type="submit" className="btn">LOG IN</button>
 
-              {this.takeToRegister()}
-              <button onClick={this.setRedirect} className="btn">Register</button>
+              {this.takeToSignup()}
+              <button onClick={this.setToSignup} className="btn">SING UP</button>
             </div>
           </div>
         </div>
