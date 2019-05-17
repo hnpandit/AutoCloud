@@ -1,67 +1,58 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-//import API from "../../util/api";
+import API from "../../util/api";
 import "./UserLogin.css";
 
 //* global gapi */
 
 class UserLogin extends Component {
   state = {
-    userEmail: sessionStorage.getItem("email"),
-    redirect: false
+    //userEmail: sessionStorage.getItem("email"),
+    email: "",
+    password: "",
+    proceed: false,
   };
 
-  setRedirect = () => {
+  setProceed = () => {
     this.setState({
-      redirect: true
+      proceed: true
     });
+  };
+
+  change = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    API.loginUser({
+      email: this.state.email,
+      password: this.state.password
+    })
+      .then(res => {
+        console.log("Logging res @ UserLogin.js: ", res);
+        if (res.data.token) {
+          this.setState({
+            token: res.data.token
+          })
+          sessionStorage.setItem("userToken", res.data.token);
+          this.setProceed();
+        } 
+      })
+      .catch(err => console.log("logging error: ", err));
   };
 
   takeToDashboard = () => {
-    console.log("logging this.state.userEmail: ", this.state.userEmail);
-    if (this.state.userEmail) {
+    if (this.state.token) {
       return <Redirect to="/dashboard" />;
-    /*
-    API.getUsers({}).then(res => {
-      res.data.forEach(element => {
-        if (element.email === this.state.userEmail) {
-          console.log("email matched database: ", element.email);
-          return <Redirect to="/dashboard" />;
-        } else {
-          return <Redirect to="/register" />;
-        }
-      });
-    });
-    */
     }
   };
 
   takeToRegister = () => {
     if (this.state.redirect) return <Redirect to="/register" />;
   };
-  
-  /*
-  signOut = () => {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function() {
-      console.log("User signed out.");
-    });
-    this.removeCookies();
-    sessionStorage.removeItem("email");
-  };
-
-  //Added to remove cookies from browser
-  removeCookies = () => {
-    var res = document.cookie;
-    var multiple = res.split(";");
-    for (var i = 0; i < multiple.length; i++) {
-      var key = multiple[i].split("=");
-      document.cookie = key[0] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
-    }
-  };
-  */
-
-  
 
   render() {
     return (
@@ -71,28 +62,44 @@ class UserLogin extends Component {
             <div className="col-lg-12">
               <h3>Welcome to </h3>
               <h1>Auto Cloud</h1>
+              <div className="form-group">
+                <input
+                  name="email"
+                  value={this.state.email}
+                  onChange={e => this.change(e)}
+                  type="email"
+                  required
+                  className="form-control"
+                  placeholder="E-Mail (required)"
+                  id="email"
+                />
+              </div>
+
+              <div className="form-group">
+                <input
+                  name="password"
+                  value={this.state.password}
+                  onChange={e => this.change(e)}
+                  type="password"
+                  required
+                  className="form-control"
+                  placeholder="Password (required)"
+                  id="password"
+                />
+              </div>
 
               {/*This button sings user with google*/}
-              
+              {/*}
               <div
                 className="g-signin2"
                 id="google-btn"
                 data-onsuccess="onSignIn"
               />
-              
-              {this.takeToDashboard()}
-
-              <br />
-
-              {/*Added signout button for testing purposes*/}
-              {/*
-              <a href="/" onClick={this.signOut}>
-                Sign out
-              </a>
               */}
-              
 
-              {/*This button takes user to registration page*/}
+              {this.takeToDashboard()}
+              <button onClick={this.handleFormSubmit} type="submit">Submit</button>
+
               {this.takeToRegister()}
               <button onClick={this.setRedirect}>Register</button>
             </div>
