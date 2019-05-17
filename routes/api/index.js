@@ -1,4 +1,5 @@
 // Dependencies
+require('dotenv').config();
 const router = require('express').Router();
 const userRouter = require('./user');
 const carRouter = require('./car');
@@ -17,7 +18,7 @@ router.use(function(req, res, next) {
     if (token) {
   
       // verifies secret and checks exp
-      jwt.verify(token, 'secret', function(err, decoded) {       if (err) {
+      jwt.verify(token, process.env.SECRET_KEY, function(err, decoded) {       if (err) {
           return res.json({ success: false, message: 'Failed to authenticate token.' });       } else {
           // if everything is good, save to request for use in other routes
 		  req.decoded = decoded;         

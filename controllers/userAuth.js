@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
@@ -68,7 +69,7 @@ exports.user_login = (req, res, next) => {
               email: user[0].email,
               userId: user[0]._id
             },
-            "secret",
+            process.env.SECRET_KEY,
             {
               expiresIn: "1h"
             }
