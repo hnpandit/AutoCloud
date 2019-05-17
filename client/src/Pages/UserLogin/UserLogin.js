@@ -98,10 +98,10 @@ class UserLogin extends Component {
               */}
 
               {this.takeToDashboard()}
-              <button onClick={this.handleFormSubmit} type="submit">Submit</button>
+              <button onClick={this.handleFormSubmit} type="submit" className="btn">Submit</button>
 
               {this.takeToRegister()}
-              <button onClick={this.setRedirect}>Register</button>
+              <button onClick={this.setRedirect} className="btn">Register</button>
             </div>
           </div>
         </div>
