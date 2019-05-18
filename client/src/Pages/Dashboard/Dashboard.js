@@ -8,11 +8,12 @@ import { Redirect } from "react-router-dom";
 //import Tabs from "react-bootstrap/Tabs";
 import Navbar from "../../Components/Navbar/Navbar";
 
-/* global gapi */
+//* global gapi */
 
 class Dashboard extends Component {
   
   state = {
+    userToken: sessionStorage.getItem("userToken"),
     userEmail: sessionStorage.getItem("email"),
     user: [],
     signOut: false
@@ -37,14 +38,17 @@ class Dashboard extends Component {
   };
 
   signOut = () => {
+    /*
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function() {
       console.log("User signed out.");
     });
+    */
     this.removeCookies();
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("userId");
     sessionStorage.removeItem("carId");
+    sessionStorage.removeItem("userToken");
     this.setSignOut();
   };
 
@@ -76,7 +80,8 @@ class Dashboard extends Component {
 
           <Vehicles
             vehicles={[
-              {
+              /*
+              { 
                 registration: "11/22/2019",
                 license: "12/20/2022",
                 inspection: "12/21"
@@ -86,6 +91,7 @@ class Dashboard extends Component {
                 license: "1/13/2021",
                 inspection: "3/23"
               }
+              */
             ]}
           />
         </div>
