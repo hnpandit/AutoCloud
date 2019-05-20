@@ -1,0 +1,10 @@
+#signup-page {
+    background: url(https://i1.wp.com/www.wallpapersbyte.com/wp-content/uploads/2015/06/lamborghini-aventador-black-rear-wallpaperByte-com-1280x1024.jpg?fit=1280%2C1024&ssl=1) no-repeat center;
+	/*background: url(https://i.pinimg.com/originals/97/7f/be/977fbe4bceded3d36b9b39b812cb94af.jpg) no-repeat center; */
+	background-size: cover;
+	color: #fff;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Quicksand', sans-serif;
+}

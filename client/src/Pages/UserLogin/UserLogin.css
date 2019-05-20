@@ -1,6 +1,7 @@
 
 #registrationPage {
-	background: url(https://i.pinimg.com/originals/97/7f/be/977fbe4bceded3d36b9b39b812cb94af.jpg) no-repeat center; /*"fixed" value could be added only with "background" property*/
+	/*background: url(https://i.pinimg.com/originals/97/7f/be/977fbe4bceded3d36b9b39b812cb94af.jpg) no-repeat center; */
+	background: url(https://www.wallpaperup.com/uploads/wallpapers/2014/02/21/264153/73a360c68042ae98f65d8a49936ea78c-700.jpg) no-repeat center; /*"fixed" value could be added only with "background" property*/
 	background-size: cover;
 	color: #fff;
 	height: 100%;
