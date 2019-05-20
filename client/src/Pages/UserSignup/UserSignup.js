@@ -74,8 +74,8 @@ class Signup extends Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <h3>Welcome to </h3>
               <h1>Auto Cloud</h1>
+              <p>Create Your Account</p>
               <div className="form-group">
                 <input
                   name="email"

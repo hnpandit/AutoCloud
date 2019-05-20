@@ -50,7 +50,7 @@ class UserRegistration extends Component {
     });
     */
     //this.removeCookies();
-    sessionStorage.removeItem("UserEmail");
+    sessionStorage.removeItem("userEmail");
     sessionStorage.removeItem("userId");
     this.setCancel();
   };

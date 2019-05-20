@@ -14,7 +14,7 @@ class Dashboard extends Component {
   
   state = {
     userToken: sessionStorage.getItem("userToken"),
-    userEmail: sessionStorage.getItem("email"),
+    userEmail: sessionStorage.getItem("userEmail"),
     user: [],
     signOut: false
   };
@@ -31,35 +31,18 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    API.getUsers()
+    API.getUserByEmail(this.state.userEmail)
       .then(res => this.setState({user: res.data}))
       .catch(err => console.log(err));
 
   };
 
   signOut = () => {
-    /*
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function() {
-      console.log("User signed out.");
-    });
-    */
-    this.removeCookies();
     sessionStorage.removeItem("userEmail");
     sessionStorage.removeItem("userId");
     sessionStorage.removeItem("carId");
     sessionStorage.removeItem("userToken");
     this.setSignOut();
-  };
-
-  //Added to remove cookies from browser
-  removeCookies = () => {
-    var res = document.cookie;
-    var multiple = res.split(";");
-    for (var i = 0; i < multiple.length; i++) {
-      var key = multiple[i].split("=");
-      document.cookie = key[0] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
-    }
   };
   
   // loadItems = () => {
