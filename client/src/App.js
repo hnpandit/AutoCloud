@@ -8,6 +8,7 @@ import CarProfile from "./Pages/CarProfile/CarProfile";
 import DocumentProfile from "./Pages/DocumentProfile/DocumentProfile";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
+import UserSignup from "./Pages/UserSignup/UserSignup";
 
 // Importing App css
 import "./App.css";
@@ -18,6 +19,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={UserLogin} />
+          <Route path="/signup" component={UserSignup} />
           <Route path="/register" component={UserRegistration} />
           <Route path="/carProfile" component={CarProfile} />
           <Route path="/documentProfile" component={DocumentProfile} />

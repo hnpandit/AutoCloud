@@ -1,29 +1,39 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import API from "../../util/api";
-import "./UserLogin.css";
+import "./UserSignup.css";
 
-//* global gapi */
-
-class UserLogin extends Component {
+class Signup extends Component {
   state = {
     //userEmail: sessionStorage.getItem("email"),
     email: "",
     password: "",
-    toDashboard: false,
-    toSignup: false
+    proceed: false,
+    toLogin: false
   };
 
-  setToDashboard = () => {
+  setToLogin = () => {
     this.setState({
-      toDashboard: true
+      toLogin: true
     });
   };
 
-  setToSignup = () => {
+  setProceed = () => {
     this.setState({
-      toSignup: true
+      proceed: true
     });
+  };
+
+  renderProceed = () => {
+    if (this.state.proceed) {
+      return <Redirect to="/register" />;
+    }
+  }
+
+  renderToLogin = () => {
+    if (this.state.toLogin) {
+      return <Redirect to="/" />;
+    }
   };
 
   change = event => {
@@ -34,36 +44,33 @@ class UserLogin extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    API.loginUser({
+    console.log("submit button works!")
+    
+    API.signUpUser({
       email: this.state.email,
       password: this.state.password
     })
       .then(res => {
-        console.log("Logging res @ UserLogin.js: ", res);
-        if (res.data.token) {
-          this.setState({
-            token: res.data.token
-          })
-          sessionStorage.setItem("userToken", res.data.token);
-          this.setToDashboard();
+        console.log("Logging res @ UserSignup.js: ", res);
+        
+        if (res.status === 200) {
+            
+          
+          //this.setState({
+          //  token: res.data.token
+          //})
+          sessionStorage.setItem("userEmail", this.state.email);
+          this.setProceed();
         } 
+        
       })
       .catch(err => console.log("logging error: ", err));
-  };
-
-  takeToDashboard = () => {
-    if (this.state.token) {
-      return <Redirect to="/dashboard" />;
-    }
-  };
-
-  takeToSignup = () => {
-    if (this.state.toSignup) return <Redirect to="/signup" />;
+      
   };
 
   render() {
     return (
-      <div id="registrationPage">
+      <div id="signup-page">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -95,20 +102,15 @@ class UserLogin extends Component {
                 />
               </div>
 
-              {/*This button sings user with google*/}
-              {/*}
-              <div
-                className="g-signin2"
-                id="google-btn"
-                data-onsuccess="onSignIn"
-              />
-              */}
+              {this.renderProceed()}
+              <button onClick={this.handleFormSubmit} className="btn">
+                Next
+              </button>
 
-              {this.takeToDashboard()}
-              <button onClick={this.handleFormSubmit} type="submit" className="btn">LOG IN</button>
-
-              {this.takeToSignup()}
-              <button onClick={this.setToSignup} className="btn">SING UP</button>
+              {this.renderToLogin()}
+              <button onClick={this.setToLogin} type="submit" className="btn">
+                Already a member
+              </button>
             </div>
           </div>
         </div>
@@ -117,4 +119,4 @@ class UserLogin extends Component {
   }
 }
 
-export default UserLogin;
+export default Signup;

@@ -45,7 +45,7 @@ class Dashboard extends Component {
     });
     */
     this.removeCookies();
-    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("userEmail");
     sessionStorage.removeItem("userId");
     sessionStorage.removeItem("carId");
     sessionStorage.removeItem("userToken");

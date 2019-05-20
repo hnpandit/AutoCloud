@@ -7,11 +7,11 @@ import API from "../../util/api";
 
 class UserRegistration extends Component {
   state = {
-    userEmail: sessionStorage.getItem("email"),
+    
     userId: "",
     firstName: "",
     lastName: "",
-    email: "",
+    email: sessionStorage.getItem("userEmail"),
     phoneNumber: "",
 
     proceed: false,
@@ -49,12 +49,12 @@ class UserRegistration extends Component {
       console.log("User signed out.");
     });
     */
-    this.removeCookies();
-    sessionStorage.removeItem("email");
+    //this.removeCookies();
+    sessionStorage.removeItem("UserEmail");
     sessionStorage.removeItem("userId");
     this.setCancel();
   };
-
+  /*
   //Added to remove cookies from browser
   removeCookies = () => {
     var res = document.cookie;
@@ -64,7 +64,7 @@ class UserRegistration extends Component {
       document.cookie = key[0] + " =; expires = Thu, 01 Jan 1970 00:00:00 UTC";
     }
   };
-
+  */
   change = event => {
     this.setState({
       [event.target.name]: event.target.value
