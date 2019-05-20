@@ -104,12 +104,12 @@ class Signup extends Component {
 
               {this.renderProceed()}
               <button onClick={this.handleFormSubmit} className="btn">
-                Next
+                NEXT
               </button>
 
               {this.renderToLogin()}
               <button onClick={this.setToLogin} type="submit" className="btn">
-                Already a member
+                Already a member?
               </button>
             </div>
           </div>
