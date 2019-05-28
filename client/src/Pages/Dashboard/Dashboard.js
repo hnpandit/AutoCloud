@@ -30,8 +30,11 @@ class Dashboard extends Component {
       if (this.state.signOut) return <Redirect to="/" />; 
   }
 
+  //Added by Prashanth 
   componentDidMount() {
-    API.getUserByEmail(this.state.userEmail)
+   // API.getUserByEmail(this.state.userEmail)
+   console.log('sessionStorage.getItem("userEmail")  :: '+sessionStorage.getItem("userEmail"));
+   API.getUserByEmail(sessionStorage.getItem("userEmail"))
       .then(res => this.setState({user: res.data}))
       .catch(err => console.log(err));
 
