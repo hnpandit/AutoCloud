@@ -45,6 +45,7 @@ class UserLogin extends Component {
             token: res.data.token
           })
           sessionStorage.setItem("userToken", res.data.token);
+          sessionStorage.setItem("email",this.state.email); //ADDED BY PM
           this.setToDashboard();
         } 
       })
