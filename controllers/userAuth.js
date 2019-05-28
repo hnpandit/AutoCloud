@@ -14,7 +14,7 @@ exports.user_signup = (req, res, next) => {
       console.log('loggin user: ', user)
       if (user.length >= 1) {
         return res.status(409).json({
-          message: "Mail exists"
+          message: "Email exists"
         });
       } else {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
@@ -127,4 +127,46 @@ exports.update_pwd = (req, res, next) => {
         error: err
       });
     });
+}
+
+
+exports.user_update = (req, res, next) => {
+  User.find({ email: req.body.email })
+    .exec()
+    .then(user => {
+      console.log('loggin user: ', user)
+      if (user.length < 1) {
+        return res.status(409).json({
+          message: "No such email exists"
+        });
+      } else {
+        bcrypt.hash(req.body.password, 10, (err, hash) => {
+          if (err) {
+            return res.status(500).json({
+              error: err
+            });
+          } else {
+            const user = {
+              _id: req.params.userId,
+              email: req.body.email,
+              password: hash
+            };
+            user
+              .save()
+              .then(result => {
+                console.log(result);
+                res.status(200).json({
+                  message: "User updated"
+                });
+              })
+              .catch(err => {
+                console.log(err);
+                res.status(500).json({
+                  error: err
+                });
+              });
+          }
+        });
+      }
+    })
 }

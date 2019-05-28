@@ -9,6 +9,6 @@ router.post('/login', UserController.user_login);
 
 router.delete('/:userId', checkAuth, UserController.delete_user);
 
-router.patch('/:userId', checkAuth, UserController.update_pwd);
+router.post('/:userId', checkAuth, UserController.user_update);
 
 module.exports = router;
