@@ -10,7 +10,9 @@ export default {
 		return axios.get('/api/users/id/' + id);
 	},
 	// Gets the user with the given email
-	getUserByEmail: function(email) {
+	getUserByEmail: function(email, token) {
+		console.log('AXIOS API CALL TOKEN VALUE FROM SESSION :: ' + token);
+		axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
 		return axios.get('/api/users/email/' + email);
 	},
 	// Saves a new user to the database (test)

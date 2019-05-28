@@ -11,6 +11,8 @@ import Navbar from "../../Components/Navbar/Navbar";
 //* global gapi */
 
 class Dashboard extends Component {
+
+  _isMounted = false;
   
   state = {
     userToken: sessionStorage.getItem("userToken"),
@@ -32,9 +34,11 @@ class Dashboard extends Component {
 
   //Added by Prashanth 
   componentDidMount() {
+    this._isMounted = true;
    // API.getUserByEmail(this.state.userEmail)
-   console.log('sessionStorage.getItem("userEmail")  :: '+sessionStorage.getItem("userEmail"));
-   API.getUserByEmail(sessionStorage.getItem("userEmail"))
+   console.log('sessionStorage.getItem("email")  :: '+sessionStorage.getItem("email"));
+   console.log('Token Check :: '+ sessionStorage.getItem("userToken"));
+   API.getUserByEmail(sessionStorage.getItem("email"), sessionStorage.getItem("userToken"))
       .then(res => this.setState({user: res.data}))
       .catch(err => console.log(err));
 
@@ -42,6 +46,7 @@ class Dashboard extends Component {
 
   signOut = () => {
     sessionStorage.removeItem("userEmail");
+    sessionStorage.removeItem("email");
     sessionStorage.removeItem("userId");
     sessionStorage.removeItem("carId");
     sessionStorage.removeItem("userToken");
