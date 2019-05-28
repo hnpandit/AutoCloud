@@ -12,17 +12,21 @@ const jwt = require('jsonwebtoken');
 router.use(function(req, res, next) {
 
     // check header or url parameters or post parameters for token
-    var token = req.body.token || req.query.token || req.headers['x-access-token'];
-   console.log("TOKEN :: " + token);
+    var token = req.body.token || req.query.token || req.headers['x-access-token'] || req.headers.authorization.split(" ")[1];
+   console.log("TOKEN :: " + req.headers.authorization.split(" ")[1]);
     // decode token
     if (token) {
   
       // verifies secret and checks exp
-      jwt.verify(token, process.env.SECRET_KEY, function(err, decoded) {       if (err) {
-          return res.json({ success: false, message: 'Failed to authenticate token.' });       } else {
+      jwt.verify(token, process.env.SECRET_KEY, function(err, decoded) {       
+        if (err) {
+          return res.json({ success: false, message: 'Failed to authenticate token.' }); 
+        } 
+        else {
           // if everything is good, save to request for use in other routes
-		  req.decoded = decoded;         
-		  next();
+          req.decoded = decoded;  
+          console.log("TESTING API ROUTE to NEXT ONE");       
+		      next();
         }
       });
   
